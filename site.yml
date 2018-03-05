@@ -1,0 +1,8 @@
+---
+- name: db
+  hosts: db
+  vars_files:
+    - vars/windows.yml
+  
+  roles:
+    - mdb
