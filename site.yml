@@ -1,6 +1,7 @@
 ---
 - name: db
   hosts: db
+  gather_facts: false
   vars_files:
     - vars/windows.yml
   
