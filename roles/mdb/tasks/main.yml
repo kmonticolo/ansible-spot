@@ -20,21 +20,29 @@
       #url: http://172.31.253.91/spot/WinSCP-5.13-Setup.exe
       dest: '{{ destdir }}'
       force: no
+
   - name: copy answer file
     win_get_url:
       url: http://172.31.253.91/spot/ConfigurationFile.ini
       dest: '{{ destdir }}'
       force: no
-  - name: win_disk_image
+
+  - name: Mount ISO
     win_disk_image:
             #image_path: "{{ destdir }}"\SQLServer2016SP1-FullSlipstream-x64-ENU.iso
       image_path: C:\temp\\SQLServer2016SP1-FullSlipstream-x64-ENU.iso
       state: present
     register: image_out
 
-  - win_package:
+  - name: install SQL server
+    win_package:
       path: '{{ image_out.mount_path }}\setup.exe'
       state: present 
-      arguments: /SAPWD="CdCi2010" /ConfigurationFile='{{ destdir }}'\ConfigurationFile.ini
-      product_id: '{0C457EC3-E998-4041-B856-908D5A2C1708}'
+      arguments: /SAPWD="CdCi2010" /ConfigurationFile="{{ destdir }}\ConfigurationFile.ini"
+      product_id: '{16F3645F-1343-4462-92DC-9AE66A2E68A3}'
+      register: sqlsetup
+
+  - debug: msg="{{ sqlsetup.stdout }}"
+    #- debug: msg="{{ sqlsetup.stderr }}"
+ 
 
