@@ -16,13 +16,13 @@
 
   - name: copy iso file
     win_get_url:
-      url: http://172.31.253.91/spot/SQLServer2016SP1-FullSlipstream-x64-ENU.iso
+      url: "{{ mirror }}/SQLServer2016SP1-FullSlipstream-x64-ENU.iso"
       dest: '{{ destdir }}'
       force: no
 
   - name: copy answer file
     win_get_url:
-      url: http://172.31.253.91/spot/ConfigurationFile.ini
+      url: "{{ mirror }}/ConfigurationFile.ini"
       dest: '{{ destdir }}'
       force: no
 
@@ -47,7 +47,7 @@
 
   - name: copy MSSM file
     win_get_url:
-      url: http://172.31.253.91/spot/SSMS-Setup-ENU.exe
+      url: "{{ mirror }}/SSMS-Setup-ENU.exe"
       dest: '{{ destdir }}'
       force: no
 
