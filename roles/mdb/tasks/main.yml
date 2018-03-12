@@ -62,6 +62,7 @@
     win_package:
       path: '{{ destdir }}\SSMS-Setup-ENU.exe'
       state: present 
+      arguments: /install /quiet /norestart
       product_id: '{1B8CFC46-1F08-4DA7-9FEA-E1F523FBD67F}'
       #register: mssmsetup
 
