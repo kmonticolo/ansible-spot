@@ -20,3 +20,24 @@
     - LocalScsetup
     - LocalSpotServices
     - LocalViewOnlyUser
+
+#- name: Add Administrator into Spot Administrators group
+#  win_user:
+#    name: Administrator
+#    state: present
+#    groups: Spot Administrators
+
+- name: Add Users into Spot Services group
+  win_user:
+    name: "{{ item }}"
+    state: present
+    groups: Spot Services
+  with_items:
+    - LocalScsetup
+    - LocalSpotServices
+
+- name: Add LocalViewOnlyUser into Spot View Only group
+  win_user:
+    name: LocalViewOnlyUser
+    state: present
+    groups: Spot View Only
