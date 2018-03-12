@@ -26,11 +26,18 @@
       dest: '{{ destdir }}'
       force: no
 
+  - name: Check if MSSQL folder exists
+    win_stat:
+      path: C:\Program Files\Microsoft SQL Server
+    register: folder
+    ignore_errors: True
+
   - name: Mount ISO
     win_disk_image:
       image_path: '{{ destdir }}\SQLServer2016SP1-FullSlipstream-x64-ENU.iso'
       state: present
     register: image_out
+    when: not folder.stat.isdir
 
   - name: install SQL server
     win_package:
@@ -38,7 +45,7 @@
       state: present 
       arguments: /SAPWD="{{ sapwd }}" /ConfigurationFile="{{ destdir }}\ConfigurationFile.ini"
       product_id: '{16F3645F-1343-4462-92DC-9AE66A2E68A3}'
-      #register: sqlsetup
+    when: not folder.stat.isdir
 
   - name: Unmount ISO
     win_disk_image:
