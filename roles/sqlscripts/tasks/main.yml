@@ -1,0 +1,10 @@
+---
+- name: copy sql_configuration.sql file
+  win_get_url:
+    url: "{{ mirror }}/sql_configuration.sql"
+    dest: '{{ destdir }}'
+    force: no
+
+- name: Execute the SQL Script to Add Users to the SQL Server
+  win_command: sqlcmd -S SPOTDB2016 -i C:\temp\sql_configuration.sql 
+
