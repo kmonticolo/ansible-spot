@@ -1,0 +1,6 @@
+---
+  - name: copy NTP package
+    win_get_url:
+      url: "{{ mirror }}/ntp-4.2.8p10-win32-setup.exe"
+      dest: '{{ destdir }}'
+      force: no
