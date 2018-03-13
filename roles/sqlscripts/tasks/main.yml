@@ -5,7 +5,7 @@
     dest: '{{ destdir }}'
     force: no
 
-- name: Execute the SQL Script to Add Users to the SQL Server
+- name: Apply SQL configuration
   win_command: sqlcmd -S SPOTDB2016 -i C:\temp\sql_configuration.sql 
 
 - name: Start SQL Server Agent
@@ -14,4 +14,12 @@
     state: started
   register: sqlserveragent
 
+- name: copy sql_add_users.sql file
+  win_get_url:
+    url: "{{ mirror }}/sql_add_users.sql"
+    dest: '{{ destdir }}'
+    force: no
+
+- name: Execute the SQL Script to Add Users to the SQL Server
+  win_command: sqlcmd -S SPOTDB2016 -i C:\temp\sql_add_users.sql
 
