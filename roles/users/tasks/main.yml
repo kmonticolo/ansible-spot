@@ -45,5 +45,5 @@
 - name: Modify Log On as a Service Policy in User Rights Assignment Local Security Policy Settings
   win_user_right:
     name: SeServiceLogonRight
-    users: Spot Services
+    users: SPOTDB2016\Spot Services
     action: add
