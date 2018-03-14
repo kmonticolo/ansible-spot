@@ -7,9 +7,9 @@
     - vars/mdb.yml
   
   roles:
-    - mdb
-    - users
-    - sqlscripts
-    - ntp
-    - reboot
+    - { role: mdb, tags: mdb }
+    - { role: users, tags: users }
+    - { role: sqlscripts, tags: sqlscripts }
+    - { role: ntp, tags: ntp }
+    - { role: reboot, tags: reboot }
     - { role: mpegdb, tags: mpegdb }
