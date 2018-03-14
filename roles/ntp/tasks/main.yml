@@ -31,6 +31,6 @@
     expected_return_code: [0, 2]
     state: present
 
-- name: check NTP command
-  win_command: ntpq -p
-  register: ntpq
+    #- name: check NTP command
+    #win_command: ntpq -p
+    #register: ntpq
