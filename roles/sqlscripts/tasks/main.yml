@@ -1,7 +1,7 @@
 ---
 - name: copy sql_configuration.sql file
   win_get_url:
-    url: "{{ mirror }}/sql_configuration.sql"
+    url: "{{ mirror }}/sql/sql_configuration.sql"
     dest: '{{ destdir }}'
     force: no
 
@@ -10,7 +10,7 @@
 
 - name: copy sql_add_users.sql file
   win_get_url:
-    url: "{{ mirror }}/sql_add_users.sql"
+    url: "{{ mirror }}/sql/sql_add_users.sql"
     dest: '{{ destdir }}'
     force: no
 
