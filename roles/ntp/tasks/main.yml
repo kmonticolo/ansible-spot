@@ -1,6 +1,36 @@
 ---
-  - name: copy NTP package
-    win_get_url:
-      url: "{{ mirror }}/ntp-4.2.8p10-win32-setup.exe"
-      dest: '{{ destdir }}'
-      force: no
+- name: copy NTP package
+  win_get_url:
+    url: "{{ mirror }}/ntp/ntp-4.2.8p10-win32-setup.exe"
+    dest: '{{ destdir }}'
+    force: no
+
+- name: create NTP directory
+  win_file:
+    path: C:\Program Files (x86)\NTP\etc
+    state: directory
+
+- name: get NTP install.ini
+  win_get_url:
+    url: "{{ mirror }}/ntp/install.ini"
+    dest: '{{ destdir }}'
+    force: no
+
+- name: get ntp.conf
+  win_get_url:
+    url: "{{ mirror }}/ntp/ntp.conf"
+    dest: C:\Program Files (x86)\NTP\etc
+    force: yes
+
+- name: Install NTP and use a file version for the installation check
+  win_package:
+    path: '{{ destdir }}\ntp-4.2.8p10-win32-setup.exe'
+    creates_path: C:\Program Files (x86)\NTP\bin\ntpd.exe
+    creates_version: 4.2.8p10
+    arguments: /USE_FILE=c:\temp\install.ini
+    expected_return_code: [0, 2]
+    state: present
+
+- name: check NTP command
+  win_command: ntpq -p
+  register: ntpq
