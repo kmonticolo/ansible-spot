@@ -1,0 +1,8 @@
+---
+- name: Run gpupdate
+  win_command: gpupdate /force
+
+- name: Reboot
+  win_reboot: 
+    shutdown_timeout: 3600
+    reboot_timeout: 3600
