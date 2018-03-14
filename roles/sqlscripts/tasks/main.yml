@@ -33,8 +33,7 @@
     name: MSSQLSERVER
     state: restarted
     username: .\LocalScsetup
-    password: "CdCi2010"
-    #password: "{{ sapwd }}"
+    password: "{{ sapwd }}"
     start_mode: auto
   register: mssqlserver
 
