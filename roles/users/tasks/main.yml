@@ -12,7 +12,7 @@
 - name: Ensure users are present
   win_user:
     name: "{{ item }}"
-    password: Cdci2010
+    password: CdCi2010
     state: present
     password_never_expires: yes
     groups: Administrators
