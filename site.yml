@@ -12,3 +12,4 @@
     - sqlscripts
     - ntp
     - reboot
+    - { role: mpegdb, tags: mpegdb }
