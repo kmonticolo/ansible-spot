@@ -1,9 +1,31 @@
 ---
+- name: Add FullControl AccessRule
+  win_acl:
+    path: C:\Program Files\Microsoft SQL Server
+    user: "{{ item }}"
+    rights: FullControl
+    type: allow
+    state: present
+    #inherit: ContainerInherit, ObjectInherit
+    propagation: 'None'
+    become: yes
+  with_items:
+  - Administrator
+  - Administrators
+  - Spot Administrators
+  - Spot Services
+    
+    #- name: create folders from powershell
+    #win_command: powershell -Command 'new-item "C:\Program Files\Microsoft SQL Server\mssql\data" -itemtype directory'
+
 - name: create folder
   win_file:
-    #path: c:\program files\microsoft sql server\mssql\data
-    path: C:\Program Files\Microsoft SQL Server\mssql\data
-    type: directory
+    path: "{{ item }}"
+    #type: directory
+    type: file
+  with_items:
+    - C:\Program Files\Microsoft SQL Server\mssql
+      #- C:\Program Files\Microsoft SQL Server\mssql\data\
 
 - name: copy create_mpeg.sql file
   win_get_url:
@@ -12,4 +34,4 @@
     force: no
 
 - name: Execute the SQL Script to Add Users to the SQL Server
-  win_command: sqlcmd -S SPOTDB2016 -i C:\temp\create_mpeg.sql
+  win_command: sqlcmd -S SPOTDB2016 -i C:\temp\create_mpeg.sql -o C:\temp\create_mpeg.txt
