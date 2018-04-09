@@ -25,4 +25,4 @@
   roles:
     - { role: users, tags: users }
     - { role: ntp, tags: ntp }
-    
+      #- { role: reboot, tags: reboot }
