@@ -1,4 +1,9 @@
 ---
+- name: Ensure destdir directory exists
+  win_file:
+    path: '{{ destdir }}'
+    state: directory
+
 - name: Copy NTP package
   win_get_url:
     url: "{{ mirror }}/ntp/ntp-4.2.8p10-win32-setup.exe"
