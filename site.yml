@@ -9,6 +9,7 @@
   roles:
     - { role: mdb, tags: mdb }
     - { role: users, tags: users }
+    - { role: dbusers, tags: dbusers }
     - { role: sqlscripts, tags: sqlscripts }
     - { role: ntp, tags: ntp }
     - { role: reboot, tags: reboot }
