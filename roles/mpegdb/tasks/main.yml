@@ -24,7 +24,8 @@
     #type: directory
     type: file
   with_items:
-    - C:\Program Files\Microsoft SQL Server\mssql
+          #- C:\Program Files\Microsoft SQL Server\mssql
+    - C:\Program Files\Microsoft SQL Server\MSSQL13.KAMIL\MSSQL\DATA\
       #- C:\Program Files\Microsoft SQL Server\mssql\data\
 
 - name: copy create_mpeg.sql file
