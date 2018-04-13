@@ -17,7 +17,7 @@
 
   - name: Check if MSSQL folder exists
     win_stat:
-      path: C:\Program Files\Microsoft SQL Server
+      path: "{{ mssqlpath }}"
     register: folder
 
   - name: copy iso file
