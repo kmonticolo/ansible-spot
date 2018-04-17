@@ -10,7 +10,7 @@
     - { role: mdb, tags: mdb }
     - { role: users, tags: users }
     - { role: dbusers, tags: dbusers }
-    - { role: sqlscripts, tags: sqlscripts }
+    - { role: sqlscripts, tags: sqlscripts } # another is mpegdb
     - { role: ntp, tags: ntp }
     - { role: reboot, tags: reboot }
     - { role: mpegdb, tags: mpegdb }
