@@ -7,4 +7,22 @@
     - vars/mdb.yml
   
   roles:
-    - mdb
+    - { role: mdb, tags: mdb }
+    - { role: users, tags: users }
+    - { role: dbusers, tags: dbusers }
+    - { role: sqlscripts, tags: sqlscripts } # another is mpegdb
+    - { role: ntp, tags: ntp }
+    - { role: reboot, tags: reboot }
+    - { role: mpegdb, tags: mpegdb }
+
+- name: mvl
+  hosts: mvl
+  gather_facts: false
+  vars_files:
+    - vars/windows.yml
+    - vars/mvl.yml
+
+  roles:
+    - { role: users, tags: users }
+    - { role: ntp, tags: ntp }
+      #- { role: reboot, tags: reboot }

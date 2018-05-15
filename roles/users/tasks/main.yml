@@ -1,0 +1,45 @@
+---
+- name: Create groups
+  win_group:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - Administrators
+    - Spot Administrators
+    - Spot Services
+    - Spot View Only
+
+- name: Ensure users are present
+  win_user:
+    name: "{{ item }}"
+    password: "{{ sapwd }}"
+    state: present
+    password_never_expires: yes
+    groups: Administrators
+  with_items:
+    - LocalScsetup
+    - LocalSpotServices
+    - LocalViewOnlyUser
+
+- name: Add Administrator into Spot Administrators group
+  win_user:
+    name: Administrator
+    state: present
+    groups: Spot Administrators
+    groups_action: add
+
+- name: Add Users into Spot Services group
+  win_user:
+    name: "{{ item }}"
+    state: present
+    groups: Spot Services
+    groups_action: add
+  with_items:
+    - LocalScsetup
+    - LocalSpotServices
+
+- name: Add LocalViewOnlyUser into Spot View Only group
+  win_user:
+    name: LocalViewOnlyUser
+    state: present
+    groups: Spot View Only
