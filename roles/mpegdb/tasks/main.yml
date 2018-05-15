@@ -32,5 +32,5 @@
     dest: '{{ destdir }}'
     force: no
 
-- name: Execute the SQL Script to Add Users to the SQL Server
+- name: Execute the SQL Script create_mpeg.sql
   win_command: sqlcmd -S {{ dbname }} -i C:\temp\create_mpeg.sql -o C:\temp\create_mpeg.txt
