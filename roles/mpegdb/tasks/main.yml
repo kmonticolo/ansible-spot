@@ -34,3 +34,12 @@
 
 - name: Execute the SQL Script create_mpeg.sql
   win_command: sqlcmd -S {{ dbname }} -i C:\temp\create_mpeg.sql -o C:\temp\create_mpeg.txt
+
+- name: copy SPOT53_populate_zone_support_v2.sql file
+  win_get_url:
+    url: "{{ mirror }}/sql/SPOT53_populate_zone_support_v2.sql"
+    dest: '{{ destdir }}'
+    force: no
+
+- name: Execute the SQL Script create_mpeg.sql
+  win_command: sqlcmd -S {{ dbname }} -i C:\temp\SPOT53_populate_zone_support_v2.sql -o C:\temp\SPOT53_populate_zone_support_v2.txt
