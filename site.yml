@@ -24,6 +24,7 @@
     - vars/mvl.yml
 
   roles:
+    - { role: mvl, tags: mvl }
     - { role: users, tags: users }
     - { role: ntp, tags: ntp }
     - { role: populate_hosts, tags: populate_hosts }
