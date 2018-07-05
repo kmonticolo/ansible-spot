@@ -14,6 +14,7 @@
     - { role: ntp, tags: ntp }
     - { role: reboot, tags: reboot }
     - { role: mpegdb, tags: mpegdb }
+    - { role: populate_hosts, tags: populate_hosts }
 
 - name: mvl
   hosts: mvl
@@ -25,4 +26,5 @@
   roles:
     - { role: users, tags: users }
     - { role: ntp, tags: ntp }
+    - { role: populate_hosts, tags: populate_hosts }
       #- { role: reboot, tags: reboot }
