@@ -1,0 +1,7 @@
+---
+- name: Modify Log On as a Service Policy in User Rights Assignment Local Security Policy Settings
+  win_user_right:
+    name: SeServiceLogonRight
+    users: "{{ tss_hostname }}\\Spot Services"
+    action: add
+
