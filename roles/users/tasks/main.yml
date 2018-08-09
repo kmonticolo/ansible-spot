@@ -15,6 +15,9 @@
     password: "{{ sapwd }}"
     state: present
     password_never_expires: yes
+    account_locked: no
+    account_disabled: no
+    groups_action: add
     groups: Administrators
   with_items:
     - LocalScsetup
