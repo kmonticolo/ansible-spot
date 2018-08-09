@@ -46,9 +46,11 @@
     name: LocalViewOnlyUser
     state: present
     groups: Spot View Only
+    groups_action: add
 
 - name: Add LocalViewOnlyUser into Administrators group
   win_user:
     name: LocalViewOnlyUser
     state: present
     groups: Administrators
+    groups_action: add
