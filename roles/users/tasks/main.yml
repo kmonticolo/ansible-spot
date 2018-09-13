@@ -27,6 +27,7 @@
 - name: Add Administrator into Spot Administrators group
   win_user:
     name: Administrator
+    password_never_expires: yes
     state: present
     groups: Spot Administrators
     groups_action: add
