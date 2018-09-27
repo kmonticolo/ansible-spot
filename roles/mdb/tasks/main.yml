@@ -53,7 +53,7 @@
     win_disk_image:
       image_path: '{{ destdir }}\SQLServer2016SP1-FullSlipstream-x64-ENU.iso'
       state: absent
-    when: not image_out|failed
+    when: not image_out is failed
 
   - name: copy MSSM file
     win_get_url:
