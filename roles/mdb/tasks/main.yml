@@ -19,6 +19,7 @@
     win_stat:
       path: "{{ mssqlpath }}"
     register: folder
+    changed_when: False
 
   - name: copy iso file
     win_get_url:
