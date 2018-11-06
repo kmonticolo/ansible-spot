@@ -15,16 +15,13 @@
   - Spot Administrators
   - Spot Services
     
-    #- name: create folders from powershell
-    #win_command: powershell -Command 'new-item "C:\Program Files\Microsoft SQL Server\mssql\data" -itemtype directory'
-
-- name: create folder
+- name: create folder d_data
   win_file:
     path: "{{ item }}"
-    #type: directory
-    type: file
+    type: directory
   with_items:
-    - "{{ mssqlpath }}"
+    - D:\sql
+    - D:\sql\data
 
 - name: copy create_mpeg.sql file
   win_get_url:
@@ -41,5 +38,5 @@
     dest: '{{ destdir }}'
     force: no
 
-- name: Execute the SQL Script create_mpeg.sql
+- name: Execute the SQL Script SPOT53_populate_zone_support_v2.sql
   win_command: sqlcmd -S {{ dbname }} -i C:\temp\SPOT53_populate_zone_support_v2.sql -o C:\temp\SPOT53_populate_zone_support_v2.txt
