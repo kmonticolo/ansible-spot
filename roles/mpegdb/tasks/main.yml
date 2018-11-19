@@ -32,11 +32,12 @@
 - name: Execute the SQL Script create_mpeg.sql
   win_command: sqlcmd -S {{ dbname }} -i C:\temp\create_mpeg.sql -o C:\temp\create_mpeg.txt
 
-- name: copy SPOT53_populate_zone_support_v2.sql file
+- name: copy SPOT53_populate_zone_support.sql file
   win_get_url:
-    url: "{{ mirror }}/sql/SPOT53_populate_zone_support_v2.sql"
+    url: "{{ mirror }}/sql/SPOT53_populate_zone_support.sql"
     dest: '{{ destdir }}'
     force: no
+  tags: populatezonesql
 
-- name: Execute the SQL Script SPOT53_populate_zone_support_v2.sql
-  win_command: sqlcmd -S {{ dbname }} -i C:\temp\SPOT53_populate_zone_support_v2.sql -o C:\temp\SPOT53_populate_zone_support_v2.txt
+- name: Execute the SQL Script SPOT53_populate_zone_support.sql
+  win_command: sqlcmd -S {{ dbname }} -i C:\temp\SPOT53_populate_zone_support.sql -o C:\temp\SPOT53_populate_zone_support.txt
