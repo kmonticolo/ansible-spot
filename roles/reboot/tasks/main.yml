@@ -4,5 +4,4 @@
 
 - name: Reboot
   win_reboot: 
-    shutdown_timeout: 3600
     reboot_timeout: 3600
