@@ -24,8 +24,8 @@
     - D:\sql\data
 
 - name: copy create_mpeg.sql file
-  win_get_url:
-    url: "{{ mirror }}/sql/create_mpeg.sql"
+  win_template:
+    src: create_mpeg.sql
     dest: '{{ destdir }}'
     force: no
 
