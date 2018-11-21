@@ -28,9 +28,9 @@
       force: no
     when: not folder.stat.exists
 
-  - name: copy answer file
-    win_get_url:
-      url: "{{ mirror }}/ConfigurationFile.ini"
+  - name: copy answer template
+    win_template:
+      src: ConfigurationFile.ini
       dest: '{{ destdir }}'
       force: no
     when: not folder.stat.exists
@@ -48,7 +48,7 @@
       state: present 
       arguments: /SAPWD="{{ sapwd }}" /ConfigurationFile="{{ destdir }}\ConfigurationFile.ini"
       product_id: '{16F3645F-1343-4462-92DC-9AE66A2E68A3}'
-    when: not folder.stat.exists
+      when: not folder.stat.exists
 
   - name: Unmount ISO
     win_disk_image:
