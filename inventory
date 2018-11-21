@@ -3,9 +3,9 @@ ansible_winrm_read_timeout_sec=600
 
 [db]
 #172.31.253.101
-#172.31.253.43
+172.31.253.152
 # adam
-172.31.253.81 ansible_password=vagrant
+#172.31.253.81 ansible_password=vagrant
 # tigo mdb
 #10.48.77.5
 
