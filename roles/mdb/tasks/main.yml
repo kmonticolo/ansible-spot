@@ -19,6 +19,7 @@
     win_stat:
       path: "{{ mssqlpath }}"
     register: folder
+    changed_when: False
 
   - name: copy iso file
     win_get_url:
@@ -27,9 +28,9 @@
       force: no
     when: not folder.stat.exists
 
-  - name: copy answer file
-    win_get_url:
-      url: "{{ mirror }}/ConfigurationFile.ini"
+  - name: copy answer template
+    win_template:
+      src: ConfigurationFile.ini
       dest: '{{ destdir }}'
       force: no
     when: not folder.stat.exists
@@ -47,13 +48,13 @@
       state: present 
       arguments: /SAPWD="{{ sapwd }}" /ConfigurationFile="{{ destdir }}\ConfigurationFile.ini"
       product_id: '{16F3645F-1343-4462-92DC-9AE66A2E68A3}'
-    when: not folder.stat.exists
+      when: not folder.stat.exists
 
   - name: Unmount ISO
     win_disk_image:
       image_path: '{{ destdir }}\SQLServer2016SP1-FullSlipstream-x64-ENU.iso'
       state: absent
-    when: not image_out|failed
+    when: not image_out is failed
 
   - name: copy MSSM file
     win_get_url:

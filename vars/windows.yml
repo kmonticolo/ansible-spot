@@ -1,7 +1,13 @@
 ---
 #destdir: C:\Users\Administrator\AppData\Local\Temp\
-destdir: C:\temp
+destdir: C:\temp\
 mirror: http://172.31.253.91/spot750
 # system admin password
 sapwd: Cdci2010
+
+# dbname is in mdb.yml
+mdb_hostname: VVIMDB01
+mvl_hostname: VVIMVL01
+tss_hostname: VVITSS01
+
 

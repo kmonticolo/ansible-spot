@@ -14,6 +14,7 @@
     - { role: ntp, tags: ntp }
     - { role: reboot, tags: reboot }
     - { role: mpegdb, tags: mpegdb }
+    - { role: populate_hosts, tags: populate_hosts }
 
 - name: mvl
   hosts: mvl
@@ -24,5 +25,21 @@
 
   roles:
     - { role: users, tags: users }
+    - { role: mvl, tags: mvl }
     - { role: ntp, tags: ntp }
+    - { role: populate_hosts, tags: populate_hosts }
+      #- { role: reboot, tags: reboot }
+
+- name: tss
+  hosts: tss
+  gather_facts: false
+  vars_files:
+    - vars/windows.yml
+      #- vars/tss.yml
+
+  roles:
+    - { role: users, tags: users }
+    - { role: tss, tags: tss }
+    - { role: ntp, tags: ntp }
+    - { role: populate_hosts, tags: populate_hosts }
       #- { role: reboot, tags: reboot }

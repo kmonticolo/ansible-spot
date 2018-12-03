@@ -1,0 +1,3 @@
+# change hostname
+cmd
+netdom renamecomputer %COMPUTERNAME% /Newname /Force "VVIMDB01"
