@@ -14,11 +14,12 @@
   - Administrators
   - Spot Administrators
   - Spot Services
-    
+
 - name: create folder d_data
   win_file:
     path: "{{ item }}"
     type: directory
+    recurse: yes
   with_items:
     - D:\sql
     - D:\sql\data
