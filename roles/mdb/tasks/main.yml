@@ -57,7 +57,7 @@
     state: present
     arguments: /SAPWD="{{ sapwd }}" /ConfigurationFile="{{ destdir }}\ConfigurationFile.ini"
     product_id: '{16F3645F-1343-4462-92DC-9AE66A2E68A3}'
-    when: not folder.stat.exists
+  when: not folder.stat.exists
 
 - name: Unmount ISO
   win_disk_image:
