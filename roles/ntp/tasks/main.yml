@@ -1,40 +1,46 @@
 ---
-- name: Ensure destdir directory exists
+- name: Ensure proper directories exists
   win_file:
-    path: '{{ destdir }}'
+    path: "{{ item }}"
     state: directory
+  loop:
+    - '{{ destdir }}'
+    - C:\Program Files (x86)\NTP\etc
 
 - name: Copy NTP package
-  win_get_url:
-    url: "{{ mirror }}/ntp/ntp-4.2.8p10-win32-setup.exe"
+  win_copy:
+    src: files/ntp-4.2.8p10-win32-setup.exe
     dest: '{{ destdir }}'
     force: no
-
-- name: Create NTP directory
-  win_file:
-    path: C:\Program Files (x86)\NTP\etc
-    state: directory
+    remote_src: no
 
 - name: Copy NTP install.ini
-  win_get_url:
-    url: "{{ mirror }}/ntp/install.ini"
+  win_copy:
+    src: files/install.ini
     dest: '{{ destdir }}'
     force: no
+    remote_src: no
 
 - name: Copy ntp.conf
-  win_get_url:
-    url: "{{ mirror }}/ntp/ntp.conf"
-    dest: C:\Program Files (x86)\NTP\etc
-    force: yes
+  win_template:
+    src: templates/ntp.conf.j2
+    dest: C:\Program Files (x86)\NTP\etc\ntp.conf
+    force: no
+
+- name: check for exists NTP installation
+  win_stat:
+    path: C:\Program Files (x86)\NTP\bin\ntpd.exe
+  register: ntp_file
 
 - name: Install NTP and use a file version for the installation check
   win_package:
     path: '{{ destdir }}\ntp-4.2.8p10-win32-setup.exe'
     creates_path: C:\Program Files (x86)\NTP\bin\ntpd.exe
     creates_version: 4.2.8p10
-    arguments: /USE_FILE=c:\temp\install.ini
+    arguments: /USE_FILE="{{ destdir }}\install.ini"
     expected_return_code: [0, 2]
     state: present
+  when: ntp_file.stat.exists == False
 
     #- name: check NTP command
     #win_command: ntpq -p
