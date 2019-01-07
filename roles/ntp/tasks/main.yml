@@ -25,16 +25,22 @@
   win_get_url:
     url: "{{ mirror }}/ntp/ntp.conf"
     dest: C:\Program Files (x86)\NTP\etc
-    force: yes
+    force: no
+
+- name: check for exists NTP installation
+  win_stat:
+    path: C:\Program Files (x86)\NTP\bin\ntpd.exe
+  register: ntp_file
 
 - name: Install NTP and use a file version for the installation check
   win_package:
     path: '{{ destdir }}\ntp-4.2.8p10-win32-setup.exe'
     creates_path: C:\Program Files (x86)\NTP\bin\ntpd.exe
     creates_version: 4.2.8p10
-    arguments: /USE_FILE=c:\temp\install.ini
+    arguments: /USE_FILE='{{ destdir }}'\install.ini
     expected_return_code: [0, 2]
     state: present
+  when: ntp_file.stat.exists == False
 
     #- name: check NTP command
     #win_command: ntpq -p
