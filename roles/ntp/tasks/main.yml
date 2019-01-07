@@ -37,7 +37,7 @@
     path: '{{ destdir }}\ntp-4.2.8p10-win32-setup.exe'
     creates_path: C:\Program Files (x86)\NTP\bin\ntpd.exe
     creates_version: 4.2.8p10
-    arguments: /USE_FILE='{{ destdir }}\install.ini'
+    arguments: /USE_FILE="{{ destdir }}\install.ini"
     expected_return_code: [0, 2]
     state: present
   when: ntp_file.stat.exists == False
