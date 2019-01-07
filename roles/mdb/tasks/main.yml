@@ -45,10 +45,10 @@
   - name: install SQL server
     win_package:
       path: '{{ image_out.mount_path }}\setup.exe'
-      state: present 
+      state: present
       arguments: /SAPWD="{{ sapwd }}" /ConfigurationFile="{{ destdir }}\ConfigurationFile.ini"
       product_id: '{16F3645F-1343-4462-92DC-9AE66A2E68A3}'
-      when: not folder.stat.exists
+    when: not folder.stat.exists
 
   - name: Unmount ISO
     win_disk_image:
@@ -65,7 +65,6 @@
   - name: install Microsoft SQL Server Management Studio
     win_package:
       path: '{{ destdir }}\SSMS-Setup-ENU.exe'
-      state: present 
+      state: present
       arguments: /install /quiet /norestart
       product_id: '{1B8CFC46-1F08-4DA7-9FEA-E1F523FBD67F}'
-
