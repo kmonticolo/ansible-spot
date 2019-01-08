@@ -27,9 +27,6 @@
     get_checksum: yes
   register: sql_add_users
 
-- debug:
-    var: sql_add_users.stat.checksum
-
 - name: Execute the SQL Script to Add Users to the SQL Server
   win_command: sqlcmd -S {{ dbname }} -i C:\temp\sql_add_users.sql -o C:\temp\sql_add_users.txt
   when: sql_add_users.stat.checksum != "817b0425248dcf6182fd7c923d4307a08f03aadc"
