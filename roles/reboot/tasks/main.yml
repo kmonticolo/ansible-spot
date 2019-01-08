@@ -1,8 +1,10 @@
 ---
 - name: Run gpupdate
   win_command: gpupdate /force
-  changed_when: False
+  changed_when: no
+
 
 - name: Reboot
   win_reboot:
     reboot_timeout: 3600
+  changed_when: no
