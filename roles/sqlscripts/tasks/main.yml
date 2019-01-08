@@ -5,8 +5,8 @@
     dest: '{{ destdir }}'
     force: no
 
-- name: Apply SQL configuration
-  win_command: sqlcmd -S {{ dbname }} -i C:\temp\sql_configuration.sql 
+- name: Apply SQL sql_configuration.sql file
+  win_command: sqlcmd -S {{ dbname }} -i C:\temp\sql_configuration.sql -o C:\temp\sql_configuration.sql.txt
 
 - name: copy sql_add_users.sql file
   win_get_url:
@@ -15,7 +15,7 @@
     force: no
 
 - name: Execute the SQL Script to Add Users to the SQL Server
-  win_command: sqlcmd -S {{ dbname }} -i C:\temp\sql_add_users.sql
+  win_command: sqlcmd -S {{ dbname }} -i C:\temp\sql_add_users.sql -o C:\temp\sql_add_users.txt
 
   # Change MSSQLServer and SQLServer Agent Accounts to Use Local Account
 
