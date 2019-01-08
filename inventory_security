@@ -1,0 +1,31 @@
+ansible_winrm_operation_timeout_sec=300
+ansible_winrm_read_timeout_sec=600
+
+[security]
+[security:children]
+db
+mvl
+tsi
+
+[security:vars]
+ansible_user=Administrator
+become_method=runas
+ansible_password=Cdci2018
+ansible_connection=psrp
+ansible_psrp_protocol=http
+ansible_psrp_proxy=socks5h://localhost:1234
+ansible_winrm_server_cert_validation=ignore
+
+
+[db]
+mdb05 ansible_host=128.168.5.10
+mdb06 ansible_host=128.168.6.10 
+sdb05 ansible_host=128.168.5.11 
+fsdb05 ansible_host=128.168.5.15 
+
+[mvl]
+mvl05 ansible_host=128.168.5.12 
+fmvl05 ansible_host=128.168.5.16 
+
+[tsi]
+tsi6412 ansible_host=128.168.64.12 

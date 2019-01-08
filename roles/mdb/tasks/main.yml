@@ -1,70 +1,79 @@
 ---
-  - name: create temp dir
-    win_file:
-      path: '{{ destdir }}'
-      state: directory
+- name: Change the hostname
+  win_hostname:
+    name: "{{ mdb_hostname }}"
+  register: hostname
 
-  - name: create dreplay result dir
-    win_file:
-      path: C:\Program Files (x86)\Microsoft SQL Server\DReplayClient\ResultDir
-      state: directory
+- name: Reboot
+  win_reboot:
+    reboot_timeout: 3600
+  when: hostname.changed
 
-  - name: create dreplay working dir
-    win_file:
-      path: C:\Program Files (x86)\Microsoft SQL Server\DReplayClient\WorkingDir
-      state: directory
+- name: create temp dir
+  win_file:
+    path: '{{ destdir }}'
+    state: directory
 
+- name: create dreplay result dir
+  win_file:
+    path: C:\Program Files (x86)\Microsoft SQL Server\DReplayClient\ResultDir
+    state: directory
 
-  - name: Check if MSSQL folder exists
-    win_stat:
-      path: "{{ mssqlpath }}"
-    register: folder
-    changed_when: False
+- name: create dreplay working dir
+  win_file:
+    path: C:\Program Files (x86)\Microsoft SQL Server\DReplayClient\WorkingDir
+    state: directory
 
-  - name: copy iso file
-    win_get_url:
-      url: "{{ mirror }}/SQLServer2016SP1-FullSlipstream-x64-ENU.iso"
-      dest: '{{ destdir }}'
-      force: no
-    when: not folder.stat.exists
+- name: Check if MSSQL folder exists
+  win_stat:
+    path: "{{ mssqlpath }}"
+  register: folder
+  changed_when: False
 
-  - name: copy answer template
-    win_template:
-      src: ConfigurationFile.ini
-      dest: '{{ destdir }}'
-      force: no
-    when: not folder.stat.exists
+- name: copy iso file
+  win_get_url:
+    url: "{{ mirror }}/SQLServer2016SP1-FullSlipstream-x64-ENU.iso"
+    dest: '{{ destdir }}'
+    force: no
+  when: not folder.stat.exists
 
-  - name: Mount ISO
-    win_disk_image:
-      image_path: '{{ destdir }}\SQLServer2016SP1-FullSlipstream-x64-ENU.iso'
-      state: present
-    register: image_out
-    when: not folder.stat.exists
+- name: copy answer template
+  win_template:
+    src: ConfigurationFile.ini
+    dest: '{{ destdir }}'
+    force: no
+  when: not folder.stat.exists
 
-  - name: install SQL server
-    win_package:
-      path: '{{ image_out.mount_path }}\setup.exe'
-      state: present
-      arguments: /SAPWD="{{ sapwd }}" /ConfigurationFile="{{ destdir }}\ConfigurationFile.ini"
-      product_id: '{16F3645F-1343-4462-92DC-9AE66A2E68A3}'
-    when: not folder.stat.exists
+- name: Mount ISO
+  win_disk_image:
+    image_path: '{{ destdir }}\SQLServer2016SP1-FullSlipstream-x64-ENU.iso'
+    state: present
+  register: image_out
+  when: not folder.stat.exists
 
-  - name: Unmount ISO
-    win_disk_image:
-      image_path: '{{ destdir }}\SQLServer2016SP1-FullSlipstream-x64-ENU.iso'
-      state: absent
-    when: not image_out is failed
+- name: install SQL server
+  win_package:
+    path: '{{ image_out.mount_path }}\setup.exe'
+    state: present
+    arguments: /SAPWD="{{ sapwd }}" /ConfigurationFile="{{ destdir }}\ConfigurationFile.ini"
+    product_id: '{16F3645F-1343-4462-92DC-9AE66A2E68A3}'
+  when: not folder.stat.exists
 
-  - name: copy MSSM file
-    win_get_url:
-      url: "{{ mirror }}/SSMS-Setup-ENU.exe"
-      dest: '{{ destdir }}'
-      force: no
+- name: Unmount ISO
+  win_disk_image:
+    image_path: '{{ destdir }}\SQLServer2016SP1-FullSlipstream-x64-ENU.iso'
+    state: absent
+  when: not image_out is failed
 
-  - name: install Microsoft SQL Server Management Studio
-    win_package:
-      path: '{{ destdir }}\SSMS-Setup-ENU.exe'
-      state: present
-      arguments: /install /quiet /norestart
-      product_id: '{1B8CFC46-1F08-4DA7-9FEA-E1F523FBD67F}'
+- name: copy MSSM file
+  win_get_url:
+    url: "{{ mirror }}/SSMS-Setup-ENU.exe"
+    dest: '{{ destdir }}'
+    force: no
+
+- name: install Microsoft SQL Server Management Studio
+  win_package:
+    path: '{{ destdir }}\SSMS-Setup-ENU.exe'
+    state: present
+    arguments: /install /quiet /norestart
+    product_id: '{1B8CFC46-1F08-4DA7-9FEA-E1F523FBD67F}'
