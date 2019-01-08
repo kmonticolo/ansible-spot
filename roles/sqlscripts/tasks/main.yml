@@ -5,8 +5,15 @@
     dest: '{{ destdir }}'
     force: no
 
+- name: Check for sql_configuration.txt output
+  win_stat:
+    path: C:\temp\sql_configuration.sql.txt
+    get_checksum: yes
+  register: sql_configuration
+
 - name: Apply SQL sql_configuration.sql file
   win_command: sqlcmd -S {{ dbname }} -i C:\temp\sql_configuration.sql -o C:\temp\sql_configuration.txt
+  when: sql_configuration.stat.checksum != "5b262ef633b120c258336c686f0c653e290d3521"
 
 - name: copy sql_add_users.sql file
   win_get_url:
@@ -14,8 +21,18 @@
     dest: '{{ destdir }}'
     force: no
 
+- name: Check for sql_add_users.txt output
+  win_stat:
+    path: C:\temp\sql_add_users.txt
+    get_checksum: yes
+  register: sql_add_users
+
+- debug:
+    var: sql_add_users.stat.checksum
+
 - name: Execute the SQL Script to Add Users to the SQL Server
   win_command: sqlcmd -S {{ dbname }} -i C:\temp\sql_add_users.sql -o C:\temp\sql_add_users.txt
+  when: sql_add_users.stat.checksum != "817b0425248dcf6182fd7c923d4307a08f03aadc"
 
   # Change MSSQLServer and SQLServer Agent Accounts to Use Local Account
 
@@ -27,6 +44,7 @@
     state: stopped
     start_mode: auto
   register: sqlserveragent
+  changed_when: no
 
 - name: Restart MSSQLSERVER service
   win_service:
@@ -36,6 +54,7 @@
     password: "{{ sapwd }}"
     start_mode: auto
   register: mssqlserver
+  changed_when: no
 
 - name: Start SQL Server Agent
   win_service:
@@ -45,3 +64,4 @@
     state: started
     start_mode: auto
   register: sqlserveragent
+  changed_when: no
