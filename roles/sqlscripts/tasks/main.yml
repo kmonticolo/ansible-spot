@@ -6,7 +6,7 @@
     force: no
 
 - name: Apply SQL sql_configuration.sql file
-  win_command: sqlcmd -S {{ dbname }} -i C:\temp\sql_configuration.sql -o C:\temp\sql_configuration.sql.txt
+  win_command: sqlcmd -S {{ dbname }} -i C:\temp\sql_configuration.sql -o C:\temp\sql_configuration.txt
 
 - name: copy sql_add_users.sql file
   win_get_url:
