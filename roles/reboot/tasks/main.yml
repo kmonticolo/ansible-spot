@@ -3,8 +3,12 @@
   win_command: gpupdate /force
   changed_when: no
 
+- name: Check if reboot_lock exists
+  win_stat:
+    path: C:\temp\reboot_lock.txt
+  register: reboot_lock
 
 - name: Reboot
   win_reboot:
     reboot_timeout: 3600
-  changed_when: no
+  when: not reboot_lock.stat.exists

@@ -1,4 +1,11 @@
 ---
+# create reboot_lock to avoid reboot in reboot role
+- name: Create reboot_lock
+  win_file:
+    path: C:\temp\reboot_lock.txt
+    state: touch
+  changed_when: no
+
 - name: Add FullControl AccessRule
   win_acl:
     path: C:\Program Files\Microsoft SQL Server
