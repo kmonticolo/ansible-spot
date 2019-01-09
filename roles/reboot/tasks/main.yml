@@ -10,7 +10,7 @@
 
 - name: Check if reboot_lock exists
   win_stat:
-    path: C:\temp\reboot_lock.txt
+    path: '{{ destdir }}\reboot_lock.txt'
   register: reboot_lock
 
 - name: Reboot
