@@ -7,11 +7,18 @@
     dest: '{{ destdir }}'
     force: no
 
+- name: Obtain information about a registry key property
+  win_reg_stat:
+    path: HKLM:\SOFTWARE\WOW6432Node\SeaChange\CDCI\Setup\About
+    name: Version
+  register: reg_spot_version
+
 - name: Mount SPOT ISO
   win_disk_image:
     image_path: '{{ destdir }}\{{ spot_iso}}'
     state: present
   register: image_out
+  when: not reg_spot_version.exists
 
 #-  debug:
 #     var: image_out
@@ -26,6 +33,7 @@
   win_shell: '{{ image_out.mount_path }}\spot\Setup\setup.exe -distribute "{{ dbname }}"'
   args:
     chdir: '{{ image_out.mount_path }}\spot\Setup'
+  when: not reg_spot_version.exists
 
 # paths were changed from MSSQL10 to MSSQL13 C:\cdci\distribution\SQL\Scripts\rep_mstr_2008.sql
 - name: Overwrite rep_mstr_2008.sql script
@@ -34,11 +42,14 @@
     dest: C:\cdci\distribution\SQL\Scripts\
     force: yes
     remote_src: no
+  when: not reg_spot_version.exists
 
 - name: Run SPOT setup.exe with answer file
   win_shell: '{{ image_out.mount_path }}\spot\Setup\setup.exe -answer="{{ destdir }}\MachinBuildAns.json"'
   args:
     chdir: '{{ image_out.mount_path }}\spot\Setup'
+  when: not reg_spot_version.exists
+
 
 
 #- name: Unmount SPOT ISO
