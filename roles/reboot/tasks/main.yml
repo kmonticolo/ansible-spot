@@ -1,7 +1,11 @@
 ---
+- name: Check if host is part of domain
+  win_command: wmic computersystem get domain
+  register: domain
+
 - name: Run gpupdate
   win_command: gpupdate /force
-  changed_when: no
+  when: not "WORKGROUP" in domain.stdout
 
 - name: Check if reboot_lock exists
   win_stat:
