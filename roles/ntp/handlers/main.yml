@@ -1,5 +1,5 @@
 ---
-- name: restart NTP service
+- name: Restart NTP service
   win_service:
     name: NTP
     state: restarted
