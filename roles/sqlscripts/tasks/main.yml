@@ -33,6 +33,12 @@
 
   # Change MSSQLServer and SQLServer Agent Accounts to Use Local Account
 
+- name: Obtain information about a registry key property
+  win_reg_stat:
+    path: HKLM:\SOFTWARE\WOW6432Node\SeaChange\CDCI\Setup\About
+    name: Version
+  register: reg_spot_version
+
 - name: Stop SQL Server Agent
   win_service:
     name: SQLSERVERAGENT
@@ -41,7 +47,7 @@
     state: stopped
     start_mode: auto
   register: sqlserveragent
-  changed_when: no
+  when: not reg_spot_version.exists
 
 - name: Restart MSSQLSERVER service
   win_service:
@@ -51,7 +57,7 @@
     password: "{{ sapwd }}"
     start_mode: auto
   register: mssqlserver
-  changed_when: no
+  when: not reg_spot_version.exists
 
 - name: Start SQL Server Agent
   win_service:
@@ -61,4 +67,4 @@
     state: started
     start_mode: auto
   register: sqlserveragent
-  changed_when: no
+  when: not reg_spot_version.exists
