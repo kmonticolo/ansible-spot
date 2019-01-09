@@ -1,4 +1,16 @@
 ---
+- name: common
+  hosts: all
+  gather_facts: false
+  vars_files:
+    - vars/windows.yml
+
+  roles:
+    - { role: users, tags: users }
+    - { role: ntp, tags: ntp }
+    - { role: reboot, tags: reboot }
+    - { role: populate_hosts, tags: populate_hosts }
+
 - name: db
   hosts: db
   gather_facts: false
