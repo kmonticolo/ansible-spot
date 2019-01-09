@@ -1,0 +1,7 @@
+---
+- name: restart NTP service
+  win_service:
+    name: NTP
+    state: restarted
+    start_mode: auto
+  register: ntp_service

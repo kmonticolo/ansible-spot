@@ -25,9 +25,14 @@
   win_template:
     src: templates/ntp.conf.j2
     dest: C:\Program Files (x86)\NTP\etc\ntp.conf
-    force: no
+    force: yes
+  register: ntp_conf
+  notify: restart NTP service
 
-- name: Check for exists NTP installation
+- name: Flush handlers
+  meta: flush_handlers
+
+- name: check for exists NTP installation
   win_stat:
     path: C:\Program Files (x86)\NTP\bin\ntpd.exe
   register: ntp_file
