@@ -27,7 +27,7 @@
     dest: C:\Program Files (x86)\NTP\etc\ntp.conf
     force: no
 
-- name: check for exists NTP installation
+- name: Check for exists NTP installation
   win_stat:
     path: C:\Program Files (x86)\NTP\bin\ntpd.exe
   register: ntp_file

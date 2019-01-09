@@ -2,7 +2,7 @@
 # create reboot_lock to avoid reboot in reboot role
 - name: Create reboot_lock
   win_file:
-    path: C:\temp\reboot_lock.txt
+    path: '{{ destdir }}\reboot_lock.txt'
     state: touch
   changed_when: no
 
@@ -22,7 +22,7 @@
   - Spot Administrators
   - Spot Services
 
-- name: create folder d_data
+- name: Create folder d_data
   win_file:
     path: "{{ item }}"
     type: directory
@@ -31,7 +31,7 @@
     - D:\sql
     - D:\sql\data
 
-- name: copy create_mpeg.sql file
+- name: Copy create_mpeg.sql file
   win_template:
     src: create_mpeg.sql
     dest: '{{ destdir }}'
@@ -39,7 +39,7 @@
 
 - name: Check for create_mpeg.txt output
   win_stat:
-    path: C:\temp\create_mpeg.txt
+    path: '{{ destdir }}\create_mpeg.txt'
     get_checksum: yes
   register: create_mpeg
 
@@ -47,7 +47,7 @@
   win_command: sqlcmd -S {{ dbname }} -i C:\temp\create_mpeg.sql -o C:\temp\create_mpeg.txt
   when: (not create_mpeg.stat.exists) or (create_mpeg.stat.exists and create_mpeg.stat.checksum != "554633c3309ee945b9b952282abfa7c4b94465ba")
 
-- name: copy SPOT53_populate_zone_support.sql file
+- name: Copy SPOT53_populate_zone_support.sql file
   win_get_url:
     url: "{{ mirror }}/sql/SPOT53_populate_zone_support.sql"
     dest: '{{ destdir }}'
@@ -56,7 +56,7 @@
 
 - name: Check for SPOT53_populate_zone_support.txt output
   win_stat:
-    path: C:\temp\SPOT53_populate_zone_support.txt
+    path: '{{ destdir }}\SPOT53_populate_zone_support.txt'
     get_checksum: yes
   register: populate_zone_support
 

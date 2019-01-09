@@ -1,5 +1,5 @@
 ---
-- name: copy sql_configuration.sql file
+- name: Copy sql_configuration.sql file
   win_get_url:
     url: "{{ mirror }}/sql/sql_configuration.sql"
     dest: '{{ destdir }}'
@@ -7,7 +7,7 @@
 
 - name: Check for sql_configuration.txt output
   win_stat:
-    path: C:\temp\sql_configuration.txt
+    path: '{{ destdir }}\sql_configuration.txt'
     get_checksum: yes
   register: sql_configuration
 
@@ -15,7 +15,7 @@
   win_command: sqlcmd -S {{ dbname }} -i C:\temp\sql_configuration.sql -o C:\temp\sql_configuration.txt
   when: (not sql_configuration.stat.exists) or (sql_configuration.stat.exists and sql_configuration.stat.checksum != "5b262ef633b120c258336c686f0c653e290d3521")
 
-- name: copy sql_add_users.sql file
+- name: Copy sql_add_users.sql file
   win_get_url:
     url: "{{ mirror }}/sql/sql_add_users.sql"
     dest: '{{ destdir }}'
@@ -23,7 +23,7 @@
 
 - name: Check for sql_add_users.txt output
   win_stat:
-    path: C:\temp\sql_add_users.txt
+    path: '{{ destdir }}\sql_add_users.txt'
     get_checksum: yes
   register: sql_add_users
 
