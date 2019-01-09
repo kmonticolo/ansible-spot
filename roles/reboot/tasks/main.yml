@@ -2,6 +2,7 @@
 - name: Check if host is part of domain
   win_command: wmic computersystem get domain
   register: domain
+  changed_when: no
 
 - name: Run gpupdate
   win_command: gpupdate /force
