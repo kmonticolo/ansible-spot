@@ -5,7 +5,7 @@
   vars_files:
     - vars/windows.yml
     - vars/mdb.yml
-  
+
   roles:
     - { role: mdb, tags: mdb }
     - { role: users, tags: users }
@@ -15,6 +15,7 @@
     - { role: reboot, tags: reboot }
     - { role: mpegdb, tags: mpegdb }
     - { role: populate_hosts, tags: populate_hosts }
+    - { role: spot_install, tags: spot_install }
 
 - name: mvl
   hosts: mvl

@@ -1,0 +1,48 @@
+---
+# tasks file for spot_install
+# http://192.168.197.213/Spot/1081/Kit/SPOT_SOFTWARE_v7.5.0.4.iso
+- name: copy SPOT iso file
+  win_get_url:
+    url: "{{ mirror_spot }}/{{ build_spot }}/Kit/{{ spot_iso }}"
+    dest: '{{ destdir }}'
+    force: no
+
+- name: Mount SPOT ISO
+  win_disk_image:
+    image_path: '{{ destdir }}\{{ spot_iso}}'
+    state: present
+  register: image_out
+
+#-  debug:
+#     var: image_out
+# mdb only for now
+- name: Copy MachinBuildAns.json
+  win_template:
+    src: templates/MachinBuildAns.json
+    dest: '{{ destdir }}'
+    force: no
+
+- name: Run SPOT setup.exe copy distribution folder
+  win_shell: '{{ image_out.mount_path }}\spot\Setup\setup.exe -distribute "{{ dbname }}"'
+  args:
+    chdir: '{{ image_out.mount_path }}\spot\Setup'
+
+# paths were changed from MSSQL10 to MSSQL13 C:\cdci\distribution\SQL\Scripts\rep_mstr_2008.sql
+- name: Overwrite rep_mstr_2008.sql script
+  win_copy:
+    src: files/rep_mstr_2008.sql
+    dest: C:\cdci\distribution\SQL\Scripts\
+    force: yes
+    remote_src: no
+
+- name: Run SPOT setup.exe with answer file
+  win_shell: '{{ image_out.mount_path }}\spot\Setup\setup.exe -answer="{{ destdir }}\MachinBuildAns.json"'
+  args:
+    chdir: '{{ image_out.mount_path }}\spot\Setup'
+
+
+#- name: Unmount SPOT ISO
+#  win_disk_image:
+#    image_path: '{{ destdir }}\{{ spot_iso}}'
+#    state: absent
+#  when: not image_out is failed
