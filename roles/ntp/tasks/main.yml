@@ -27,7 +27,7 @@
     dest: C:\Program Files (x86)\NTP\etc\ntp.conf
     force: yes
   register: ntp_conf
-  notify: restart NTP service
+  notify: Restart NTP service
 
 - name: Check for existing NTP installation
   win_stat:
