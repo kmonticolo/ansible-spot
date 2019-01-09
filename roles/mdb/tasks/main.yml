@@ -14,15 +14,13 @@
     path: '{{ destdir }}'
     state: directory
 
-- name: Create dreplay result directory
+- name: Create dreplay directories
   win_file:
-    path: C:\Program Files (x86)\Microsoft SQL Server\DReplayClient\ResultDir
+    path: "{{ item }}"
     state: directory
-
-- name: Create dreplay working directory
-  win_file:
-    path: C:\Program Files (x86)\Microsoft SQL Server\DReplayClient\WorkingDir
-    state: directory
+  loop:
+    - C:\Program Files (x86)\Microsoft SQL Server\DReplayClient\ResultDir
+    - C:\Program Files (x86)\Microsoft SQL Server\DReplayClient\WorkingDir
 
 - name: Check if MSSQL folder exists
   win_stat:
