@@ -12,7 +12,7 @@
   register: sql_configuration
 
 - name: Apply SQL sql_configuration.sql file
-  win_command: sqlcmd -S {{ dbname }} -i '{{ destdir }}\sql_configuration.sql' -o '{{ destdir }}\sql_configuration.txt'
+  win_command: sqlcmd -S {{ dbname }} -i "{{ destdir }}\sql_configuration.sql" -o "{{ destdir }}\sql_configuration.txt"
   when: (not sql_configuration.stat.exists) or (sql_configuration.stat.exists and sql_configuration.stat.checksum != "5b262ef633b120c258336c686f0c653e290d3521")
 
 - name: Copy sql_add_users.sql file
@@ -28,7 +28,7 @@
   register: sql_add_users
 
 - name: Execute the SQL Script to Add Users to the SQL Server
-  win_command: sqlcmd -S {{ dbname }} -i '{{ destdir }}\sql_add_users.sql' -o '{{ destdir }}\sql_add_users.txt'
+  win_command: sqlcmd -S {{ dbname }} -i "{{ destdir }}\sql_add_users.sql" -o "{{ destdir }}\sql_add_users.txt"
   when: not sql_add_users.stat.exists
 
   # Change MSSQLServer and SQLServer Agent Accounts to Use Local Account
