@@ -1,16 +1,4 @@
 ---
-- name: common
-  hosts: all
-  gather_facts: false
-  vars_files:
-    - vars/windows.yml
-
-  roles:
-    - { role: users, tags: users }
-    - { role: ntp, tags: ntp }
-    - { role: populate_hosts, tags: populate_hosts }
-    - { role: reboot, tags: reboot }
-
 - name: db
   hosts: db
   gather_facts: false
@@ -20,13 +8,13 @@
 
   roles:
     - { role: mdb, tags: mdb }
-    #- { role: users, tags: users }
+    - { role: users, tags: users }
     - { role: dbusers, tags: dbusers }
     - { role: sqlscripts, tags: sqlscripts } # another is mpegdb
-    #- { role: ntp, tags: ntp }
-    #- { role: reboot, tags: reboot }
+    - { role: ntp, tags: ntp }
+    - { role: reboot, tags: reboot }
     - { role: mpegdb, tags: mpegdb }
-    #- { role: populate_hosts, tags: populate_hosts }
+    - { role: populate_hosts, tags: populate_hosts }
     - { role: spot_install, tags: spot_install }
 
 - name: mvl
