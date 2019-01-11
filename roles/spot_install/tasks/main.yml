@@ -1,7 +1,7 @@
 ---
 # tasks file for spot_install
 # http://192.168.197.213/Spot/1081/Kit/SPOT_SOFTWARE_v7.5.0.4.iso
-- name: copy SPOT iso file
+- name: Copy SPOT iso file
   win_get_url:
     url: "{{ mirror_spot }}/{{ build_spot }}/Kit/{{ spot_iso }}"
     dest: '{{ destdir }}'
@@ -20,8 +20,6 @@
   register: image_out
   when: not reg_spot_version.exists
 
-#-  debug:
-#     var: image_out
 # mdb only for now
 - name: Copy MachinBuildAns.json
   win_template:
@@ -66,9 +64,3 @@
     delay: 90
     timeout: 300
   when: not reg_spot_version.exists
-
-#- name: Unmount SPOT ISO
-#  win_disk_image:
-#    image_path: '{{ destdir }}\{{ spot_iso}}'
-#    state: absent
-#  when: not image_out is failed
