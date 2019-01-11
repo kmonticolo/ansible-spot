@@ -4,12 +4,15 @@
     path: HKLM:\SOFTWARE\WOW6432Node\SeaChange\CDCI\Setup\About
     name: Version
   register: reg_spot_version
-  
-- name: Copy sql_configuration.sql file
+
+- name: Copy sql files
   win_get_url:
-    url: "{{ mirror }}/sql/sql_configuration.sql"
+    url: "{{ item }}"
     dest: '{{ destdir }}'
     force: no
+  loop:
+    - "{{ mirror }}/sql/sql_configuration.sql"
+    - "{{ mirror }}/sql/sql_add_users.sql"
 
 - name: Check for sql_configuration.txt output
   win_stat:
@@ -20,12 +23,6 @@
 - name: Apply SQL sql_configuration.sql file
   win_command: sqlcmd -S {{ dbname }} -i "{{ destdir }}\sql_configuration.sql" -o "{{ destdir }}\sql_configuration.txt"
   when: (not sql_configuration.stat.exists) or (not reg_spot_version.exists)
-
-- name: Copy sql_add_users.sql file
-  win_get_url:
-    url: "{{ mirror }}/sql/sql_add_users.sql"
-    dest: '{{ destdir }}'
-    force: no
 
 - name: Check for sql_add_users.txt output
   win_stat:
