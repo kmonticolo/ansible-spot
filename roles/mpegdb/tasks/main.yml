@@ -31,17 +31,18 @@
     - D:\sql
     - D:\sql\data
 
-- name: Copy create_mpeg.sql file
-  win_template:
-    src: create_mpeg.sql
-    dest: '{{ destdir }}'
-    force: no
-
 - name: Check for create_mpeg.txt output
   win_stat:
     path: '{{ destdir }}\create_mpeg.txt'
     get_checksum: yes
   register: create_mpeg
+
+- name: Copy create_mpeg.sql file
+  win_template:
+    src: create_mpeg.sql
+    dest: '{{ destdir }}'
+    force: no
+  when: not create_mpeg.stat.exists
 
 - name: Execute the SQL Script create_mpeg.sql
   win_command: sqlcmd -S {{ dbname }} -i C:\temp\create_mpeg.sql -o C:\temp\create_mpeg.txt
