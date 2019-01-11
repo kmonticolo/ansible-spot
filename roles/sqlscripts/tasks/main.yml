@@ -1,4 +1,10 @@
 ---
+- name: Obtain information about a registry key property
+  win_reg_stat:
+    path: HKLM:\SOFTWARE\WOW6432Node\SeaChange\CDCI\Setup\About
+    name: Version
+  register: reg_spot_version
+  
 - name: Copy sql_configuration.sql file
   win_get_url:
     url: "{{ mirror }}/sql/sql_configuration.sql"
@@ -13,7 +19,7 @@
 
 - name: Apply SQL sql_configuration.sql file
   win_command: sqlcmd -S {{ dbname }} -i "{{ destdir }}\sql_configuration.sql" -o "{{ destdir }}\sql_configuration.txt"
-  when: (not sql_configuration.stat.exists) or (sql_configuration.stat.exists and sql_configuration.stat.checksum != "5b262ef633b120c258336c686f0c653e290d3521")
+  when: (not sql_configuration.stat.exists) or (not reg_spot_version.exists)
 
 - name: Copy sql_add_users.sql file
   win_get_url:
@@ -32,12 +38,6 @@
   when: not sql_add_users.stat.exists
 
   # Change MSSQLServer and SQLServer Agent Accounts to Use Local Account
-
-- name: Obtain information about a registry key property
-  win_reg_stat:
-    path: HKLM:\SOFTWARE\WOW6432Node\SeaChange\CDCI\Setup\About
-    name: Version
-  register: reg_spot_version
 
 - name: Stop SQL Server Agent
   win_service:
