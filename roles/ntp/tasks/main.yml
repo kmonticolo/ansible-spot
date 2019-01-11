@@ -9,17 +9,13 @@
 
 - name: Copy NTP package
   win_copy:
-    src: files/ntp-4.2.8p10-win32-setup.exe
+    src: "{{ item }}"
     dest: '{{ destdir }}'
     force: no
     remote_src: no
-
-- name: Copy NTP install.ini
-  win_copy:
-    src: files/install.ini
-    dest: '{{ destdir }}'
-    force: no
-    remote_src: no
+  loop:
+    - files/ntp-4.2.8p10-win32-setup.exe
+    - files/install.ini
 
 - name: Copy ntp.conf
   win_template:
