@@ -1,17 +1,18 @@
 ---
 # tasks file for spot_install
+- name: Obtain information about a registry key property
+  win_reg_stat:
+    path: HKLM:\SOFTWARE\WOW6432Node\SeaChange\CDCI\Setup\About
+    name: Version
+  register: reg_spot_version
+
 # http://192.168.197.213/Spot/1081/Kit/SPOT_SOFTWARE_v7.5.0.4.iso
 - name: Copy SPOT iso file
   win_get_url:
     url: "{{ mirror_spot }}/{{ build_spot }}/Kit/{{ spot_iso }}"
     dest: '{{ destdir }}'
     force: yes
-
-- name: Obtain information about a registry key property
-  win_reg_stat:
-    path: HKLM:\SOFTWARE\WOW6432Node\SeaChange\CDCI\Setup\About
-    name: Version
-  register: reg_spot_version
+  when: not reg_spot_version.exists
 
 - name: Mount SPOT ISO
   win_disk_image:
@@ -26,6 +27,7 @@
     src: templates/MachinBuildAns.json
     dest: '{{ destdir }}'
     force: no
+  when: not reg_spot_version.exists
 
 - name: Run SPOT setup.exe copy distribution folder
   win_shell: '{{ image_out.mount_path }}\spot\Setup\setup.exe -distribute "{{ dbname }}"'
