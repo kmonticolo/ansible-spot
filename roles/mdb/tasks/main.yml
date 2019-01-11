@@ -9,16 +9,12 @@
     reboot_timeout: 3600
   when: hostname.changed
 
-- name: Create temporary directory
-  win_file:
-    path: '{{ destdir }}'
-    state: directory
-
-- name: Create dreplay directories
+- name: Create directories
   win_file:
     path: "{{ item }}"
     state: directory
   loop:
+    - '{{ destdir }}'
     - C:\Program Files (x86)\Microsoft SQL Server\DReplayClient\ResultDir
     - C:\Program Files (x86)\Microsoft SQL Server\DReplayClient\WorkingDir
 
