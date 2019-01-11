@@ -38,7 +38,7 @@
     arguments: /USE_FILE="{{ destdir }}\install.ini"
     expected_return_code: [0, 2]
     state: present
-  when: ntp_file.stat.exists == False
+  when: not ntp_file.stat.exists
 
 - name: Flush handlers
   meta: flush_handlers
