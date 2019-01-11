@@ -5,7 +5,7 @@
   win_get_url:
     url: "{{ mirror_spot }}/{{ build_spot }}/Kit/{{ spot_iso }}"
     dest: '{{ destdir }}'
-    force: no
+    force: yes
 
 - name: Obtain information about a registry key property
   win_reg_stat:
