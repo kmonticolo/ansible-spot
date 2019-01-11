@@ -50,7 +50,22 @@
     chdir: '{{ image_out.mount_path }}\spot\Setup'
   when: not reg_spot_version.exists
 
+# reboot goes here
+- name: Wait for the first reboot to complete
+  wait_for_connection:
+    connect_timeout: 20
+    sleep: 5
+    delay: 5
+    timeout: 300
+  when: not reg_spot_version.exists
 
+- name: Wait for the second reboot to complete
+  wait_for_connection:
+    connect_timeout: 20
+    sleep: 5
+    delay: 90
+    timeout: 300
+  when: not reg_spot_version.exists
 
 #- name: Unmount SPOT ISO
 #  win_disk_image:
