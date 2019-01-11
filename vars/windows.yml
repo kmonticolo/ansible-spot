@@ -4,7 +4,8 @@ destdir: C:\temp\
 mirror: http://172.31.253.91/spot750
 # mirror that contains builds of SPOT
 mirror_spot: http://192.168.197.213/Spot
-spot_iso: SPOT_SOFTWARE_v7.5.0.4.iso
+spot_version: 7.5.0.4
+spot_iso: SPOT_SOFTWARE_v{{ spot_version }}.iso
 #build_spot: 1081
 build_spot: 1075
 # system admin password
