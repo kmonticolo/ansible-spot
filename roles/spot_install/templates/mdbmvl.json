@@ -6,7 +6,7 @@ The installation files are from an old version and need to be updated.
 
 You must do this before you can continue with the rebuild. Press Yes to update the installation files now.",
 "m_strBuildLog": "Guiless build",
-"m_strDistributionVersion": "V4.1.0.0 Build: 0",
+"m_strDistributionVersion": "V{{ spot_version }} Build: {{ build_spot }}",
 "m_strDistributionFolder": "\\\\SPOTDB2016\\C_DRIVE\\CDCI\\DISTRIBUTION",
 "m_bMultiValued": 0,
 "m_bRebuildable": 1,

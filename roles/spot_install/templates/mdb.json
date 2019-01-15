@@ -3,7 +3,7 @@
 "m_strDatabase": "SPOTDB2016",
 "m_strLastErrorMsg": "",
 "m_strBuildLog": "Guiless build",
-"m_strDistributionVersion": "V7.5.0.4 Build: 1075",
+"m_strDistributionVersion": "V{{ spot_version }} Build: {{ build_spot }}",
 "m_strDistributionFolder": "\\\\SPOTDB2016\\C_DRIVE\\CDCI\\DISTRIBUTION",
 "m_bMultiValued": 0,
 "m_bRebuildable": 1,
