@@ -1,3 +1,1 @@
-# change hostname
-cmd
-netdom renamecomputer %COMPUTERNAME% /Newname /Force "VVIMDB01"
+use hosts from vtsi playbook
