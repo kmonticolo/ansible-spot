@@ -22,9 +22,9 @@
   when: not reg_spot_version.exists
 
 # mdb only for now
-- name: Copy MachinBuildAns.json
+- name: Copy {{ spot_function }}.json
   win_template:
-    src: templates/MachinBuildAns.json
+    src: templates/{{ spot_function }}.json
     dest: '{{ destdir }}'
     force: no
   when: not reg_spot_version.exists
@@ -45,7 +45,7 @@
   when: not reg_spot_version.exists
 
 - name: Run SPOT setup.exe with answer file
-  win_shell: '{{ image_out.mount_path }}\spot\Setup\setup.exe -answer="{{ destdir }}\MachinBuildAns.json"'
+  win_shell: '{{ image_out.mount_path }}\spot\Setup\setup.exe -answer="{{ destdir }}\{{ spot_function }}.json"'
   args:
     chdir: '{{ image_out.mount_path }}\spot\Setup'
   when: not reg_spot_version.exists
