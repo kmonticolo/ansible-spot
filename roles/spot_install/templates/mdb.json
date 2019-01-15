@@ -1,0 +1,373 @@
+{
+"m_strName": "SPOTDB2016",
+"m_strDatabase": "SPOTDB2016",
+"m_strLastErrorMsg": "",
+"m_strBuildLog": "Guiless build",
+"m_strDistributionVersion": "V7.5.0.4 Build: 1075",
+"m_strDistributionFolder": "\\\\SPOTDB2016\\C_DRIVE\\CDCI\\DISTRIBUTION",
+"m_bMultiValued": 0,
+"m_bRebuildable": 1,
+"m_bIsMessagable": 0,
+"m_bWaitForReply": 0,
+"m_nMessageType": 0,
+"m_bSDVLConfigChanged": 1,
+"m_bNetworkConfigChanged": 0,
+"m_bDVLConfigChanged": 1,
+"m_bGeneralConfigChanged": 0,
+"m_bNeedReboot": 1,
+"m_bCanceling": 0,
+"m_nRetryCount": 0,
+"m_nStatus": 4,
+"m_nLoggingLevel": 1,
+"m_nDebugType": 0,
+"m_nEdgeBoardCount": 0,
+"m_nEdgeBoardID": 0,
+"m_strLicenseKey": "<NOT SET>",
+"m_nLicenseType": 0,
+"m_InstallServicesMap": {
+"Reboot|1": "reboot|16|3|Reboot|C:\\CDCI\\exe\\reboot.exe|.\\LocalSpotServices|Cdci2010",
+"Pager|6": "Pager|32|3|Pager|C:\\CDCI\\exe\\Pager.exe|.\\LocalSpotServices|Cdci2010",
+"SeaChange Setup|2": "scsetup|16|2|SeaChange Setup|C:\\CDCI\\exe\\scsetup.exe|.\\LocalScsetup|Cdci2010",
+"DBM|3": "dbm|32|3|DBM|C:\\CDCI\\exe\\dbm.exe|.\\LocalSpotServices|Cdci2010",
+"Alarm Analyzer|4": "Alarmana|32|3|Alarm Analyzer|C:\\CDCI\\exe\\Alarmana.exe|.\\LocalSpotServices|Cdci2010",
+"Traffic and Billing|7": "tb|32|3|Traffic and Billing|C:\\CDCI\\exe\\tb.exe|.\\LocalSpotServices|Cdci2010",
+"Alarm Collector|5": "Alarmcol|32|3|Alarm Collector|C:\\CDCI\\exe\\Alarmcol.exe|.\\LocalSpotServices|Cdci2010"
+},
+"m_ServiceAccountsMap": [
+{
+"displayName": "Reboot",
+"m_Username": ".\\LocalSpotServices",
+"m_Password": "Cdci2010"
+},
+{
+"displayName": "Alarm Analyzer",
+"m_Username": ".\\LocalSpotServices",
+"m_Password": "Cdci2010"
+},
+{
+"displayName": "Traffic and Billing",
+"m_Username": ".\\LocalSpotServices",
+"m_Password": "Cdci2010"
+},
+{
+"displayName": "DBM",
+"m_Username": ".\\LocalSpotServices",
+"m_Password": "Cdci2010"
+},
+{
+"displayName": "SeaChange Setup",
+"m_Username": ".\\LocalScsetup",
+"m_Password": "Cdci2010"
+},
+{
+"displayName": "Alarm Collector",
+"m_Username": ".\\LocalSpotServices",
+"m_Password": "Cdci2010"
+},
+{
+"displayName": "Pager",
+"m_Username": ".\\LocalSpotServices",
+"m_Password": "Cdci2010"
+}
+],
+"m_ScsetupUsername": ".\\LocalScsetup",
+"m_ScsetupPassword": "Cdci2010",
+"m_RebootUsername": ".\\LocalSpotServices",
+"m_RebootPassword": "Cdci2010",
+"m_pInfo": {
+"m_iHardwareIDMask": 0,
+"m_iDBMask": 2,
+"m_iDVLMask": 0,
+"m_iSDVLMask": 0,
+"m_iVstreamMask": 0,
+"m_nSystemType": 12,
+"m_FunctionVisible": 2,
+"m_nFunctionID": 21,
+"m_bAddOn": 0,
+"m_strFunction": "Master Database (Standalone if No Options Selected)",
+"m_Properties": [
+{
+"m_strProperty": "Function Add On - Check Style",
+"m_nPropertyID": 0,
+"m_nAddOn": 59,
+"m_bAdd": 0,
+"Function": {
+"m_iHardwareIDMask": 0,
+"m_iDBMask": 1,
+"m_iDVLMask": 1,
+"m_iSDVLMask": 2,
+"m_iVstreamMask": 1,
+"m_nSystemType": 0,
+"m_FunctionVisible": 1,
+"m_nFunctionID": 59,
+"m_bAddOn": 1,
+"m_strFunction": "Video Library",
+"m_Properties": [
+{
+"m_strProperty": "DVL - Stores Video",
+"m_nPropertyID": 305,
+"m_nAddOn": 0,
+"m_bAdd": 0
+},
+{
+"m_strProperty": "DVL - Updates VIDEO Table in Database",
+"m_nPropertyID": 315,
+"m_nAddOn": 0,
+"m_bAdd": 0
+},
+{
+"m_strProperty": "DVL - Maximum Number of Files",
+"m_nPropertyID": 325,
+"m_nAddOn": 0,
+"m_bAdd": 0
+},
+{
+"m_strProperty": "SDVLS Service",
+"m_nPropertyID": 405,
+"m_nAddOn": 0,
+"m_bAdd": 0
+},
+{
+"m_strProperty": "SDVLS Provides 30 Video Streams",
+"m_nPropertyID": 425,
+"m_nAddOn": 0,
+"m_bAdd": 0
+},
+{
+"m_strProperty": "Install Dvlrul",
+"m_nPropertyID": 500,
+"m_nAddOn": 0,
+"m_bAdd": 0
+},
+{
+"m_strProperty": "Install Dvlserv",
+"m_nPropertyID": 505,
+"m_nAddOn": 0,
+"m_bAdd": 0
+},
+{
+"m_strProperty": "Install Ingest Service",
+"m_nPropertyID": 2060,
+"m_nAddOn": 0,
+"m_bAdd": 0
+}]
+}
+},
+{
+"m_strProperty": "Function Add On - Radio Style",
+"m_nPropertyID": 1,
+"m_nAddOn": 73,
+"m_bAdd": 0,
+"Function": {
+"m_iHardwareIDMask": 0,
+"m_iDBMask": 1,
+"m_iDVLMask": 0,
+"m_iSDVLMask": 0,
+"m_iVstreamMask": 0,
+"m_nSystemType": 0,
+"m_FunctionVisible": 1,
+"m_nFunctionID": 73,
+"m_bAddOn": 1,
+"m_strFunction": "Interconnect Database",
+"m_Properties": [
+{
+"m_strProperty": "Database Supports No Task Controllers",
+"m_nPropertyID": 650,
+"m_nAddOn": 0,
+"m_bAdd": 0
+},
+{
+"m_strProperty": "Traffic & Billing is on Interconnect database",
+"m_nPropertyID": 665,
+"m_nAddOn": 0,
+"m_bAdd": 0
+},
+{
+"m_strProperty": "Build as a Interconnect DB",
+"m_nPropertyID": 1020,
+"m_nAddOn": 0,
+"m_bAdd": 0
+}]
+}
+},
+{
+"m_strProperty": "Function Add On - Radio Style",
+"m_nPropertyID": 1,
+"m_nAddOn": 71,
+"m_bAdd": 0,
+"Function": {
+"m_iHardwareIDMask": 0,
+"m_iDBMask": 1,
+"m_iDVLMask": 0,
+"m_iSDVLMask": 0,
+"m_iVstreamMask": 0,
+"m_nSystemType": 0,
+"m_FunctionVisible": 1,
+"m_nFunctionID": 71,
+"m_bAddOn": 1,
+"m_strFunction": "Master Database with Slave Database Support",
+"m_Properties": [
+{
+"m_strProperty": "Build as a Master DB",
+"m_nPropertyID": 1010,
+"m_nAddOn": 0,
+"m_bAdd": 0
+}]
+}
+},
+{
+"m_strProperty": "Disable Unwanted Functions",
+"m_nPropertyID": 100,
+"m_nAddOn": 0,
+"m_bAdd": 0},
+{
+"m_strProperty": "Basic Configuration Settings",
+"m_nPropertyID": 105,
+"m_nAddOn": 0,
+"m_bAdd": 0},
+{
+"m_strProperty": "Build as a Database Machine",
+"m_nPropertyID": 205,
+"m_nAddOn": 0,
+"m_bAdd": 0},
+{
+"m_strProperty": "DVL - Uses But Stores No Files",
+"m_nPropertyID": 300,
+"m_nAddOn": 0,
+"m_bAdd": 0},
+{
+"m_strProperty": "Install Alarm Analyzer",
+"m_nPropertyID": 525,
+"m_nAddOn": 0,
+"m_bAdd": 0},
+{
+"m_strProperty": "Install Alarm Collector",
+"m_nPropertyID": 530,
+"m_nAddOn": 0,
+"m_bAdd": 0},
+{
+"m_strProperty": "Install Pager",
+"m_nPropertyID": 535,
+"m_nAddOn": 0,
+"m_bAdd": 0},
+{
+"m_strProperty": "Install Traffic & Billing",
+"m_nPropertyID": 540,
+"m_nAddOn": 0,
+"m_bAdd": 0},
+{
+"m_strProperty": "Acts As Master Paging Machine",
+"m_nPropertyID": 610,
+"m_nAddOn": 0,
+"m_bAdd": 0},
+{
+"m_strProperty": "Alarm Analyzer Generates Database Play Statistics",
+"m_nPropertyID": 620,
+"m_nAddOn": 0,
+"m_bAdd": 0},
+{
+"m_strProperty": "Build as a Standalone DB",
+"m_nPropertyID": 1000,
+"m_nAddOn": 0,
+"m_bAdd": 0}
+]
+},
+"m_iHardwareIDMask": 0,
+"m_iDBMask": 2,
+"m_iDVLMask": 0,
+"m_iSDVLMask": 0,
+"m_iVstreamMask": 0,
+"m_nSystemType": 12,
+"m_nTimeSyncInterval": -1,
+"m_Apps": [
+{
+"m_nAppID": 1,
+"m_nFunctionID": 21,
+"m_nButtonType": 0,
+"m_nInitValue": 0,
+"m_nCurrentValue": 1,
+"m_pInstallApp": {
+"m_nAppID": 1,
+"m_nSpaceRequired": 15,
+"m_strAppName": "SeaChange Management Suite",
+"m_strDescription": "Installs the SeaChange Management programs.",
+"m_strProgramGroup": "SeaChange Management Suite",
+"m_strFolderDest": "C:\\CDCI\\MGMT",
+"m_nAppVisible": 1,
+"m_nCurrentValue": 0
+}
+},
+{
+"m_nAppID": 5,
+"m_nFunctionID": 21,
+"m_nButtonType": 0,
+"m_nInitValue": 0,
+"m_nCurrentValue": 0,
+"m_pInstallApp": {
+"m_nAppID": 5,
+"m_nSpaceRequired": 35,
+"m_strAppName": "Spot System Online Books",
+"m_strDescription": "Installs the online documentation.",
+"m_strProgramGroup": "SeaChange Management Suite",
+"m_strFolderDest": "C:\\CDCI\\DOCS",
+"m_nAppVisible": 1,
+"m_nCurrentValue": 0
+}
+}
+],
+"m_Addons": [
+{
+"m_nInitValue": 0,
+"m_nCurrentValue": 0,
+"m_nAddonID": 59
+},
+{
+"m_nInitValue": 0,
+"m_nCurrentValue": 0,
+"m_nAddonID": 73
+},
+{
+"m_nInitValue": 0,
+"m_nCurrentValue": 1,
+"m_nAddonID": 71
+}
+],
+"m_strInstallPath": "C:\\CDCI",
+"m_szUpstream": "<NOT SET>",
+"m_strLocalDB": "SPOTDB2016",
+"m_strMasterDB": "<NOT SET>",
+"m_strFunction": "Master Database (Standalone if No Options Selected)",
+"m_nFunctionID": 21,
+"m_strTimeSyncMachine": "<NOT SET>",
+"m_szNewName": "SPOTDB2016",
+"m_szMessages": "<NOT SET>",
+"m_szBuiltBy": "Administrator@SPOTDB2016 04:46 AM Thursday, November 15, 2018",
+"m_strCurrentVersion": "Not Set",
+"m_strNewVersion": "",
+"m_strVstreamKit": "<NOT SET>",
+"m_strSystemPath": "WINDOWS",
+"m_strVersionVstream": "<Unable to be detected>",
+"m_strChassis": "<NOT SET>",
+"m_cSysDrive": "C",
+"m_nMPEG": 0,
+"m_nSeaFileSystem": 0,
+"m_nClusterNode": 0,
+"m_bInstallNTP": 0,
+"m_szOtherClients": "<NOT SET>",
+"m_szOtherServers": "<NOT SET>",
+"m_nSdvlISDN": 0,
+"m_strIUScopeID": "",
+"m_strIULmHostFileName": "<NOT SET>",
+"m_strIUHostFileName": "<NOT SET>",
+"m_strDVLFileVolumes": "<NOT SET>",
+"m_strDVLDirPath": "<NOT SET>",
+"m_strDVLServers": "<NOT SET>",
+"m_nChannels": -1,
+"m_nSwitches": -1,
+"m_nDVB": -1,
+"m_strDbmsDatabase": "<NOT SET>",
+"m_strDbmsUser": "sa",
+"m_strDbmsPassword": "<NOT SET>",
+"m_strNewDbmsPassword": "",
+"m_bNewDbmsPasswordConfirmed": 1
+}
