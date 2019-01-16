@@ -44,3 +44,17 @@
     - { role: ntp, tags: ntp }
     - { role: populate_hosts, tags: populate_hosts }
       #- { role: reboot, tags: reboot }
+
+- name: tsi
+  hosts: tsi
+  gather_facts: false
+  vars_files:
+    - vars/windows.yml
+      #- vars/tsi.yml
+
+  roles:
+    - { role: users, tags: users }
+    - { role: tsi, tags: tsi }
+    - { role: ntp, tags: ntp }
+    - { role: populate_hosts, tags: populate_hosts }
+    - { role: reboot, tags: reboot }
