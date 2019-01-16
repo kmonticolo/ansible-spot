@@ -54,7 +54,6 @@
 
   roles:
     - { role: users, tags: users }
-    - { role: tsi, tags: tsi }
     - { role: ntp, tags: ntp }
     - { role: populate_hosts, tags: populate_hosts }
     - { role: reboot, tags: reboot }
