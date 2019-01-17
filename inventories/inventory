@@ -1,0 +1,30 @@
+ansible_winrm_operation_timeout_sec=300
+ansible_winrm_read_timeout_sec=600
+
+[db]
+#172.31.253.101
+172.31.253.74
+# adam
+#172.31.253.81 ansible_password=vagrant
+# tigo mdb
+#10.48.77.5
+
+#172.31.253.136 ansible_host=mdb ansible_password=Cdci2019
+#[arc]
+#172.31.253.38
+
+[mvl]
+#172.31.253.86
+#10.48.77.8
+172.31.253.82 ansible_host=mvl
+
+#[tti]
+#172.31.253.178
+
+#[tss]
+#10.48.77.6
+
+[tsi]
+172.31.253.53 ansible_host=tsi ansible_password=Cdci2010
+
+

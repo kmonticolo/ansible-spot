@@ -1,0 +1,9 @@
+ansible_winrm_operation_timeout_sec=300
+ansible_winrm_read_timeout_sec=600
+
+[db]
+10.48.77.45
+
+[tsi]
+10.48.77.23 ansible_password=Cdci2010
+#172.31.253.46 ansible_password=Cdci2010
