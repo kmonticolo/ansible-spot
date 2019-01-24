@@ -213,7 +213,7 @@ You must do this before you can continue with the rebuild. Press Yes to update t
 "m_strProperty": "Build as a Interconnect DB",
 "m_nPropertyID": 1020,
 "m_nAddOn": 0,
-"m_bAdd": 38469688
+"m_bAdd": 0
 }]
 }
 },
@@ -321,7 +321,7 @@ You must do this before you can continue with the rebuild. Press Yes to update t
 "m_strProgramGroup": "SeaChange Management Suite",
 "m_strFolderDest": "C:\\CDCI\\MGMT",
 "m_nAppVisible": 1,
-"m_nCurrentValue": 0
+"m_nCurrentValue": 1
 }
 },
 {
@@ -368,7 +368,7 @@ You must do this before you can continue with the rebuild. Press Yes to update t
 "m_strTimeSyncMachine": "<NOT SET>",
 "m_szNewName": "SPOTDB2016",
 "m_szMessages": "<NOT SET>",
-"m_szBuiltBy": "Administrator@SPOTDB2016 05:07 AM Friday, January 11, 2019",
+"m_szBuiltBy": "Administrator@SPOTDB2016 02:20 AM Thursday, January 24, 2019",
 "m_strCurrentVersion": "V7.5.0.4 Build: 1075",
 "m_strNewVersion": "",
 "m_strVstreamKit": "<NOT SET>",
@@ -386,8 +386,8 @@ You must do this before you can continue with the rebuild. Press Yes to update t
 "m_strIUScopeID": "",
 "m_strIULmHostFileName": "<NOT SET>",
 "m_strIUHostFileName": "<NOT SET>",
-"m_strDVLFileVolumes": "<NOT SET>",
-"m_strDVLDirPath": "C:\\dvldb\\dvldir",
+"m_strDVLFileVolumes": "d:\\dvldb\\dvl",
+"m_strDVLDirPath": "d:\\dvldb\\dvldir",
 "m_strDVLServers": "<NOT SET>",
 "m_nChannels": -1,
 "m_nSwitches": -1,
