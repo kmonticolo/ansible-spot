@@ -1,4 +1,12 @@
 ---
+# content of hosts file
+mdb_hostname: SPOTDB2016
+mvl_hostname: VVIMVL01
+tss_hostname: VVITSS01
+
+# SQL related vars
+mssqlpath: C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\
+dbname: "{{ mdb_hostname }}"
 #destdir: C:\Users\Administrator\AppData\Local\Temp\
 destdir: C:\temp\
 mirror: http://172.31.253.91/spot750
@@ -15,7 +23,3 @@ sapwd: Cdci2010
 
 # NTP server
 ntp_server: 192.168.160.158
-# dbname is in mdb.yml
-mdb_hostname: VVIMDB01
-mvl_hostname: VVIMVL01
-tss_hostname: VVITSS01
