@@ -9,7 +9,7 @@ spot_iso: SPOT_SOFTWARE_v{{ spot_version }}.iso
 #build_spot: 1081
 build_spot: 1075
 
-spot_function: mdb # valid values are mdb, mdbmvl
+spot_function: mdbmvl # valid values are mdb, mdbmvl
 # system admin password
 sapwd: Cdci2010
 
