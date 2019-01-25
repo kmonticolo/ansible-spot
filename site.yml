@@ -4,7 +4,6 @@
   gather_facts: false
   vars_files:
     - vars/windows.yml
-    - vars/mdb.yml
 
   roles:
     - { role: mdb, tags: mdb }
@@ -22,7 +21,6 @@
   gather_facts: false
   vars_files:
     - vars/windows.yml
-    - vars/mvl.yml
 
   roles:
     - { role: users, tags: users }
@@ -36,7 +34,6 @@
   gather_facts: false
   vars_files:
     - vars/windows.yml
-      #- vars/tss.yml
 
   roles:
     - { role: users, tags: users }
@@ -50,7 +47,6 @@
   gather_facts: false
   vars_files:
     - vars/windows.yml
-      #- vars/tsi.yml
 
   roles:
     - { role: users, tags: users }
