@@ -34,7 +34,7 @@
   win_template:
     src: ConfigurationFile.ini
     dest: '{{ destdir }}'
-    force: no
+    force: yes
   when: not mssqlserver_service.exists
 
 - name: Mount ISO
