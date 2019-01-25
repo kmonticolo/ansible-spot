@@ -1,5 +1,5 @@
 ---
 - name: Copy hosts file
-  win_copy:
-    src: hosts
+  win_template:
+    src: templates/hosts
     dest: C:\Windows\System32\Drivers\etc\hosts
