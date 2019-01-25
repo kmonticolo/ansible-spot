@@ -1,14 +1,17 @@
 ---
+site_prefix: AUTOMAT
+
 # content of hosts file
-mdb_hostname: SPOTDB2016
-mvl_hostname: VVIMVL01
-tss_hostname: VVITSS01
+mdb_hostname: "{{ site_prefix }}MDB01"
+mvl_hostname: "{{ site_prefix }}MVL01"
+tss_hostname: "{{ site_prefix }}TSS01"
 
 # SQL related vars
 mssqlpath: C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\
 dbname: "{{ mdb_hostname }}"
 #destdir: C:\Users\Administrator\AppData\Local\Temp\
 destdir: C:\temp\
+# mirror that contains sqlserver ISO
 mirror: http://172.31.253.91/spot750
 # mirror that contains builds of SPOT
 mirror_spot: http://192.168.197.213/Spot
