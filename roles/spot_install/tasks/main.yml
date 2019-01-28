@@ -6,6 +6,18 @@
     name: Version
   register: reg_spot_version
 
+- name: Check if SPOT ISO exists
+  win_stat:
+    path: '{{ destdir }}\{{ spot_iso }}'
+  register: spot_isofile
+  
+# Prevent fail at Copy SPOT iso file
+- name: Make sure SPOT ISO is not mounted
+  win_disk_image:
+    image_path: '{{ destdir }}\{{ spot_iso }}'
+    state: absent
+  when: spot_isofile.stat.exists
+
 # http://192.168.197.213/Spot/1081/Kit/SPOT_SOFTWARE_v7.5.0.4.iso
 - name: Copy SPOT iso file
   win_get_url:
@@ -16,7 +28,7 @@
 
 - name: Mount SPOT ISO
   win_disk_image:
-    image_path: '{{ destdir }}\{{ spot_iso}}'
+    image_path: '{{ destdir }}\{{ spot_iso }}'
     state: present
   register: image_out
   when: not reg_spot_version.exists
