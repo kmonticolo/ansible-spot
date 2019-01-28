@@ -25,3 +25,5 @@ site_prefix: AUTOMAT
 mdb_hostname: "{{ site_prefix}}MDB01"
 mvl_hostname: "{{ site_prefix}}MVL01"
 tss_hostname: "{{ site_prefix}}TSS01"
+
+mdb_ip: 10.48.77.45

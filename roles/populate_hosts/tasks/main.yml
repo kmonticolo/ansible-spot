@@ -1,5 +1,6 @@
 ---
 - name: Copy hosts file
-  win_copy:
-    src: hosts
+  win_template:
+    src: hosts.j2
     dest: C:\Windows\System32\Drivers\etc\hosts
+    backup: yes
