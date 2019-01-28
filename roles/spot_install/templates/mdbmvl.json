@@ -1,7 +1,7 @@
 {
-"m_strName": "SPOTDB2016",
-"m_strDatabase": "SPOTDB2016",
-"m_strLastErrorMsg": "The installation files on the local database 'SPOTDB2016' needs to be updated because of the following:
+"m_strName": "{{ mdb_hostname }}",
+"m_strDatabase": "{{ mdb_hostname }}",
+"m_strLastErrorMsg": "The installation files on the local database '{{ mdb_hostname }}' needs to be updated because of the following:
 The installation files are from an old version and need to be updated.
 
 You must do this before you can continue with the rebuild. Press Yes to update the installation files now.",
@@ -361,7 +361,7 @@ You must do this before you can continue with the rebuild. Press Yes to update t
 ],
 "m_strInstallPath": "C:\\CDCI",
 "m_szUpstream": "<NOT SET>",
-"m_strLocalDB": "SPOTDB2016",
+"m_strLocalDB": "{{ mdb_hostname }}",
 "m_strMasterDB": "<NOT SET>",
 "m_strFunction": "Master Database (Standalone if No Options Selected)",
 "m_nFunctionID": 21,
