@@ -7,10 +7,10 @@ destdir: C:\temp\
 mirror: http://172.31.253.91/spot750
 # mirror that contains builds of SPOT
 mirror_spot: http://192.168.197.213/Spot
-spot_version: 7.5.0.4
-spot_iso: SPOT_SOFTWARE_v{{ spot_version }}.iso
+spot_version: 7.5.7
+spot_iso: SPOT_SOFTWARE_v{{ spot_version }}.{{ build_spot }}.iso
 #build_spot: 1081
-build_spot: 1075
+build_spot: 1104
 
 spot_function: mdbmvl # valid values are mdb, mdbmvl
 # system admin password
@@ -26,4 +26,4 @@ mdb_hostname: "{{ site_prefix}}MDB01"
 mvl_hostname: "{{ site_prefix}}MVL01"
 tss_hostname: "{{ site_prefix}}TSS01"
 
-mdb_ip: 10.48.77.49
+mdb_ip: 10.48.77.57
