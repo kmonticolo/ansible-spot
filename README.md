@@ -10,6 +10,16 @@ OVA windows 2016 1.3
 SPOT ISO
 MSSQL ISO
 
+Prerequisities
+--------------
+On Windows machine run from powershell:
+
+`Enable-WSManCredSSP -Role Server -Force`
+`Set-Item -Path "WSMan:\localhost\Service\Auth\CredSSP" -Value $true`
+
+downloand and run psremoting: https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1
+
+
 Role Variables
 --------------
 
