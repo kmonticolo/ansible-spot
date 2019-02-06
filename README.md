@@ -19,6 +19,8 @@ On Windows machine run from powershell:
 
 downloand and run psremoting: https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1
 
+and run `powershell.exe -File ConfigureRemotingForAnsible.ps1 -Verbose -EnableCredSSP`
+
 
 Role Variables
 --------------
