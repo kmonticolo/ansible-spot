@@ -23,13 +23,6 @@
     name: MSSQLSERVER
   register: mssqlserver_service
 
-- name: Disable UAC Filtering for Local Accounts
-  win_regedit:
-    data: 1
-    datatype: dword
-    key: "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"
-    value: LocalAccountTokenFilterPolicy
-
 - name: Copy SQLServer2016 ISO file
   win_get_url:
     url: "{{ mirror }}/SQLServer2016SP1-FullSlipstream-x64-ENU.iso"
