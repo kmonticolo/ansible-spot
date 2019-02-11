@@ -9,8 +9,7 @@ mirror: http://172.31.253.91/spot750
 mirror_spot: http://192.168.197.213/Spot
 spot_version: 7.5.7
 spot_iso: SPOT_SOFTWARE_v{{ spot_version }}.{{ build_spot }}.iso
-#build_spot: 1081
-build_spot: 1104
+build_spot: 1075
 
 spot_function: mdbmvl # valid values are mdb, mdbmvl
 # system admin password
