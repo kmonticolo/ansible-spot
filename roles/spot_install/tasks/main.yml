@@ -57,9 +57,9 @@
   when: not reg_spot_version.exists
 
 - name: Run SPOT setup.exe with answer file
-  win_shell: '{{ image_out.mount_path }}\spot\Setup\setup.exe -answer="{{ destdir }}\{{ spot_function }}.json"'
+  win_shell: 'C:\cdci\distribution\Setup\setup.exe -answer="{{ destdir }}\{{ spot_function }}.json"'
   args:
-    chdir: '{{ image_out.mount_path }}\spot\Setup'
+    chdir: 'C:\cdci\distribution\Setup'
   when: not reg_spot_version.exists
 
 # reboot goes here
