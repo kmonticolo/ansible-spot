@@ -7,11 +7,11 @@ destdir: C:\temp\
 mirror: http://172.31.253.91/spot750
 # mirror that contains builds of SPOT
 mirror_spot: http://192.168.197.213/Spot
-# spot_version: 7.5.7
-spot_version: 7.5.0.4
-# spot_iso: SPOT_SOFTWARE_v{{ spot_version }}.{{ build_spot }}.iso
-spot_iso: SPOT_SOFTWARE_v{{ spot_version }}.iso
-build_spot: 1075
+spot_version: 7.5.9
+#spot_version: 7.5.0.4
+spot_iso: SPOT_SOFTWARE_v{{ spot_version }}.{{ build_spot }}.iso
+#spot_iso: SPOT_SOFTWARE_v{{ spot_version }}.iso
+build_spot: 1149
 
 spot_function: mdbmvl # valid values are mdb, mdbmvl
 # system admin password
@@ -21,10 +21,10 @@ sapwd: Cdci2010
 ntp_server: 172.31.222.252
 
 # Site prefix
-site_prefix: AUTOMAT4
+site_prefix: AUTOMAT1
 # dbname is in mdb.yml
 mdb_hostname: "{{ site_prefix }}MDB01"
 mvl_hostname: "{{ site_prefix }}MVL01"
 tss_hostname: "{{ site_prefix }}TSS01"
 
-mdb_ip: 10.48.77.58
+mdb_ip: 10.48.77.48
