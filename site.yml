@@ -15,6 +15,7 @@
     - { role: mpegdb, tags: mpegdb }
     - { role: populate_hosts, tags: populate_hosts }
     - { role: spot_install, tags: spot_install }
+    - { role: automation_tests, tags: automation_tests }
 
 - name: mvl
   hosts: mvl

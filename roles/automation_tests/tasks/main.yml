@@ -1,0 +1,73 @@
+---
+# tasks file for /home/kamil/ansible-spot/roles/automation_tests
+# zip taken from SPT-4933
+- name: Copy Automation.zip file
+  win_get_url:
+    url: "{{ mirror }}/Automation_ver2.zip"
+    dest: '{{ destdir }}'
+    force: no
+
+- name: Unzip zip file
+  win_unzip:
+    src: "{{ destdir }}/Automation_ver2.zip"
+    dest: '{{ destdir }}'
+
+# follow instructions from https://wiki.schange.com/display/Ads/How+to+configure+environment+for+automated+tests
+
+- name: Install Python and use a file version for the installation check
+  win_package:
+    path: '{{ destdir }}\Automation\python-2.7.15.msi'
+    creates_path: C:\Python27\python.exe
+    creates_version: 2.7.15
+    expected_return_code: [0]
+    state: present
+
+- name: Add Python paths to PATH
+  win_path:
+    name: Path
+    elements: "{{ item }}"
+    scope: user
+    state: present
+  with_items:
+    - C:\Python27
+    - C:\Python27\Scripts
+
+# brak pip, restart?
+- name: Run pip install pywin32-224-cp27-cp27m-win32.whl
+  win_command: pip install pywin32-224-cp27-cp27m-win32.whl
+  args:
+    chdir: '{{ destdir }}\Automation'
+
+- name: Install Six
+  win_command: python setup.py install
+  args:
+    chdir: '{{ destdir }}\Automation\six-1.12.0'
+
+- name: Install comtypes
+  win_command: python setup.py install
+  args:
+    chdir: '{{ destdir }}\Automation\comtypes-1.1.7'
+
+- name: Run pip install plumbum-1.6.7-py2.py3-none-any.whl
+  win_command: pip install plumbum-1.6.7-py2.py3-none-any.whl
+  args:
+    chdir: '{{ destdir }}\Automation'
+
+- name: Install pywinauto-0.6.5
+  win_command: python setup.py install
+  args:
+    chdir: '{{ destdir }}\Automation\pywinauto-0.6.5'
+
+- name: Install rpyc-4.0.2
+  win_command: python setup.py install
+  args:
+    chdir: '{{ destdir }}\Automation\rpyc-4.0.2'
+
+- name: Install Pillow-5.4.1.win32-py2.7
+  win_package:
+    path: '{{ destdir }}\Automation\Pillow-5.4.1.win32-py2.7.exe'
+    creates_path: C:\Python27\Lib\site-packages\Pillow-5.4.1-py2.7.egg-info\PKG-INFO
+    creates_version: 5.4.1
+    #arguments: /USE_FILE="{{ destdir }}\install.ini"
+    expected_return_code: [0]
+    state: present
