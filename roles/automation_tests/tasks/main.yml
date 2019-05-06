@@ -1,5 +1,7 @@
 ---
 # tasks file for /home/kamil/ansible-spot/roles/automation_tests
+# installation: ansible-playbook -i inventories/inventory_AUTO8  site.yml -e "site_prefix=AUTO8" -l db --tags automation_tests
+
 # zip taken from SPT-4933
 - name: Copy Automation.zip file
   win_get_url:
@@ -33,7 +35,7 @@
     - C:\Python27\Scripts
 
 # brak pip, restart?
-- name: Run pip install pywin32-224-cp27-cp27m-win32.whl
+- name: Install pywin32-224-cp27-cp27m-win32.whl by pip
   win_command: pip install pywin32-224-cp27-cp27m-win32.whl
   args:
     chdir: '{{ destdir }}\Automation'
@@ -48,7 +50,7 @@
   args:
     chdir: '{{ destdir }}\Automation\comtypes-1.1.7'
 
-- name: Run pip install plumbum-1.6.7-py2.py3-none-any.whl
+- name: Install plumbum-1.6.7-py2.py3-none-any.whl by pip
   win_command: pip install plumbum-1.6.7-py2.py3-none-any.whl
   args:
     chdir: '{{ destdir }}\Automation'
@@ -63,11 +65,17 @@
   args:
     chdir: '{{ destdir }}\Automation\rpyc-4.0.2'
 
-- name: Install Pillow-5.4.1.win32-py2.7
-  win_package:
-    path: '{{ destdir }}\Automation\Pillow-5.4.1.win32-py2.7.exe'
-    creates_path: C:\Python27\Lib\site-packages\Pillow-5.4.1-py2.7.egg-info\PKG-INFO
-    creates_version: 5.4.1
-    #arguments: /USE_FILE="{{ destdir }}\install.ini"
-    expected_return_code: [0]
-    state: present
+# pillow should be installed by using pip
+# - name: Install Pillow-5.4.1.win32-py2.7
+#   win_package:
+#     path: '{{ destdir }}\Automation\Pillow-5.4.1.win32-py2.7.exe'
+#     creates_path: C:\Python27\Lib\site-packages\Pillow-5.4.1-py2.7.egg-info\PKG-INFO
+#     creates_version: 5.4.1
+#     #arguments: /USE_FILE="{{ destdir }}\install.ini"
+#     expected_return_code: [0]
+#     state: present
+
+- name: Install Pillow-6.0.0-cp27-cp27m-win32.whl by pip
+  win_command: pip install Pillow-6.0.0-cp27-cp27m-win32.whl
+  args:
+    chdir: '{{ destdir }}\Automation'
