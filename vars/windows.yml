@@ -4,7 +4,7 @@ dbname: "{{ mdb_hostname }}"
 
 #destdir: C:\Users\Administrator\AppData\Local\Temp\
 destdir: C:\temp\
-mirror: http://172.31.253.28/spot750
+mirror: http://172.31.253.14/spot750
 # mirror that contains builds of SPOT
 mirror_spot: http://192.168.197.213/Spot
 spot_version: 7.5.9
