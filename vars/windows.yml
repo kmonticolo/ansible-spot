@@ -17,8 +17,8 @@ spot_function: mdbmvl # valid values are mdb, mdbmvl
 # system admin password
 sapwd: Cdci2010
 
-# NTP server
-ntp_server: 172.31.222.252
+# NTP server according to https://wiki.schange.com/pages/viewpage.action?spaceKey=Ads&title=Common+NTP+servers
+ntp_server: 172.31.222.1
 
 # Site prefix
 site_prefix: AUTOMAT1
