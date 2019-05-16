@@ -15,4 +15,4 @@
     - { role: mpegdb, tags: mpegdb }
     - { role: populate_hosts, tags: populate_hosts }
     - { role: spot_install, tags: spot_install }
-    - { role: automation_tests, tags: automation_tests }
+    - { role: automation_tests, tags: automation_tests, when: install_automation_tests == "yes" }

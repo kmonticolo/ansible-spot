@@ -29,3 +29,6 @@ mvl_hostname: "{{ site_prefix }}MVL01"
 tss_hostname: "{{ site_prefix }}TSS01"
 
 mdb_ip: 10.48.77.48
+
+# install automation tests prerequisites?
+install_automation_tests: "no"
