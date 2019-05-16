@@ -15,6 +15,7 @@ build_spot: 1149
 
 spot_function: mdbmvl # valid values are mdb, mdbmvl
 # system admin password
+sql_iso: en_sql_server_2016_developer_with_service_pack_2_x64_dvd_12194995.iso
 sapwd: Cdci2010
 
 # NTP server according to https://wiki.schange.com/pages/viewpage.action?spaceKey=Ads&title=Common+NTP+servers

@@ -25,7 +25,7 @@
 
 - name: Copy SQLServer2016 ISO file
   win_get_url:
-    url: "{{ mirror }}/SQLServer2016SP1-FullSlipstream-x64-ENU.iso"
+    url: "{{ mirror }}/{{ sql_iso }}"
     dest: '{{ destdir }}'
     force: no
   when: not mssqlserver_service.exists
@@ -39,7 +39,7 @@
 
 - name: Mount ISO
   win_disk_image:
-    image_path: '{{ destdir }}\SQLServer2016SP1-FullSlipstream-x64-ENU.iso'
+    image_path: '{{ destdir }}\{{ sql_iso }}'
     state: present
   register: image_out
   when: not mssqlserver_service.exists
@@ -54,7 +54,7 @@
 
 - name: Unmount ISO
   win_disk_image:
-    image_path: '{{ destdir }}\SQLServer2016SP1-FullSlipstream-x64-ENU.iso'
+    image_path: '{{ destdir }}\{{ sql_iso }}'
     state: absent
   when: not image_out is failed
 
