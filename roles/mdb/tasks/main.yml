@@ -1,4 +1,8 @@
 ---
+- name: Wait for system to become reachable over WinRM
+  wait_for_connection:
+    timeout: 900
+
 - name: Change the hostname
   win_hostname:
     name: "{{ mdb_hostname }}"
