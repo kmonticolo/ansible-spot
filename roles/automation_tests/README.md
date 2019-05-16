@@ -6,21 +6,7 @@ A brief description of the role goes here.
 Requirements
 ------------
 
-OVA windows 2016 1.3
-SPOT ISO
-MSSQL ISO
-
-Prerequisities
---------------
-On Windows machine run from powershell:
-
-`Enable-WSManCredSSP -Role Server -Force`
-`Set-Item -Path "WSMan:\localhost\Service\Auth\CredSSP" -Value $true`
-
-downloand and run psremoting: https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1
-
-and run `powershell.exe -File ConfigureRemotingForAnsible.ps1 -Verbose -EnableCredSSP`
-
+Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
 
 Role Variables
 --------------
