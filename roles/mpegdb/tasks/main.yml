@@ -45,7 +45,7 @@
   when: not create_mpeg.stat.exists
 
 - name: Execute the SQL Script create_mpeg.sql
-  win_command: sqlcmd -S {{ dbname }} -i C:\temp\create_mpeg.sql -o C:\temp\create_mpeg.txt
+  win_command: sqlcmd -S {{ dbname }} -i "{{ destdir }}\create_mpeg.sql" -o "{{ destdir }}\create_mpeg.txt"
   when: (not create_mpeg.stat.exists) or (create_mpeg.stat.exists and create_mpeg.stat.checksum != "554633c3309ee945b9b952282abfa7c4b94465ba")
 
 - name: Check for SPOT53_populate_zone_support.txt output
