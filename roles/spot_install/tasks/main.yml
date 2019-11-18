@@ -10,7 +10,7 @@
   win_stat:
     path: '{{ destdir }}\{{ spot_iso }}'
   register: spot_isofile
-  
+
 # Prevent fail at Copy SPOT iso file
 - name: Make sure SPOT ISO is not mounted
   win_disk_image:
