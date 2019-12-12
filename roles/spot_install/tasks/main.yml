@@ -51,15 +51,15 @@
 - name: Overwrite rep_mstr_2008.sql script
   win_copy:
     src: files/rep_mstr_2008.sql
-    dest: C:\cdci\distribution\SQL\Scripts\
+    dest: {{ distribution_dir }}\SQL\Scripts\
     force: yes
     remote_src: no
   when: not reg_spot_version.exists
 
 - name: Run SPOT setup.exe with answer file
-  win_shell: 'C:\cdci\distribution\Setup\setup.exe -answer="{{ destdir }}\{{ spot_function }}.json"'
+  win_shell: '{{ distribution_dir }}\Setup\setup.exe -answer="{{ destdir }}\{{ spot_function }}.json"'
   args:
-    chdir: 'C:\cdci\distribution\Setup'
+    chdir: '{{ distribution_dir }}\Setup'
   when: not reg_spot_version.exists
 
 # reboot goes here
