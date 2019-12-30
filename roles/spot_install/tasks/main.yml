@@ -2,7 +2,7 @@
 # tasks file for spot_install
 - name: Obtain information about a registry key property
   win_reg_stat:
-    path: HKLM:\SOFTWARE\WOW6432Node\SeaChange\CDCI\Setup\About
+    path: "{{ spot_registry }}"
     name: Version
   register: reg_spot_version
 
