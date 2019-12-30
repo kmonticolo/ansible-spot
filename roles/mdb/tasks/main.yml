@@ -13,14 +13,17 @@
     reboot_timeout: 3600
   when: hostname.changed
 
+- name: Set fact
+  set_fact: dreplayclientdir="C:\Program Files (x86)\Microsoft SQL Server\DReplayClient"
+  
 - name: Create directories
   win_file:
     path: "{{ item }}"
     state: directory
   loop:
     - '{{ destdir }}'
-    - C:\Program Files (x86)\Microsoft SQL Server\DReplayClient\ResultDir
-    - C:\Program Files (x86)\Microsoft SQL Server\DReplayClient\WorkingDir
+    - '{{ dreplayclientdir }}\ResultDir'
+    - '{{ dreplayclientdir }}\WorkingDir'
 
 - name: Check for mssqlserver service
   win_service:
