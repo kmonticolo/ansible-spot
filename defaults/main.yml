@@ -2,3 +2,4 @@
 # defaults file for ansible-spot
 distribution_dir: C:\cdci\distribution
 sql_server_path: 'C:\Program Files\Microsoft SQL Server'
+spot_registry: 'HKLM:\SOFTWARE\WOW6432Node\SeaChange\CDCI\Setup\About'
