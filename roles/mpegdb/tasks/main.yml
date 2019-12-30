@@ -8,7 +8,7 @@
 
 - name: Add FullControl AccessRule
   win_acl:
-    path: C:\Program Files\Microsoft SQL Server
+    path: "{{ sql_server_path }}"
     user: "{{ item }}"
     rights: FullControl
     type: allow
